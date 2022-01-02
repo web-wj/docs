@@ -1,3 +1,6 @@
+# 自己添加的规则
+.temp
+
 # Logs
 logs
 *.log
