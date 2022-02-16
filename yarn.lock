@@ -1337,6 +1337,14 @@
     "@vuepress/types" "1.9.5"
     lodash.debounce "^4.0.8"
 
+"@vuepress/plugin-active-header-links@^1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-active-header-links/-/plugin-active-header-links-1.9.7.tgz#11b3b148d50ebd0a9a9d9e97aa34d81ae04e7307"
+  integrity sha512-G1M8zuV9Og3z8WBiKkWrofG44NEXsHttc1MYreDXfeWh/NLjr9q1GPCEXtiCjrjnHZHB3cSQTKnTqAHDq35PGA==
+  dependencies:
+    "@vuepress/types" "1.9.7"
+    lodash.debounce "^4.0.8"
+
 "@vuepress/plugin-last-updated@1.9.5":
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-last-updated/-/plugin-last-updated-1.9.5.tgz#e0f8c3c1bac84fb7711936b3eadf2cc751bd868f"
@@ -1403,6 +1411,15 @@
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.5.tgz#9fe265fac3236cd5f9c01216553825461d5eca9b"
   integrity sha512-fu1Wyi+cPFyn7nfxNH4MVvU5glYvRB0RMI7besq9kiI/KkZJPb2G1hITopECJOGk+6G/cOU/iSdUDUHH4GQLgA==
+  dependencies:
+    "@types/markdown-it" "^10.0.0"
+    "@types/webpack-dev-server" "^3"
+    webpack-chain "^6.0.0"
+
+"@vuepress/types@1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.7.tgz#aeb772fd0f7c2a10c6ec1d3c803a2e4b1d756c24"
+  integrity sha512-moLQzkX3ED2o18dimLemUm7UVDKxhcrJmGt5C0Ng3xxrLPaQu7UqbROtEKB3YnMRt4P/CA91J+Ck+b9LmGabog==
   dependencies:
     "@types/markdown-it" "^10.0.0"
     "@types/webpack-dev-server" "^3"

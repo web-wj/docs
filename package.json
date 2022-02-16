@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/web-wj/docs#readme",
   "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.9.7",
     "vuepress": "^1.9.5"
   }
 }
