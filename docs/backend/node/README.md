@@ -13,7 +13,7 @@
 - 每一个元素占用一个字节内存
 - Buffer 是对底层内存的直接操作，因此大小一旦确定就不能修改
 
-Buffer 常用方法：
+Buffer 常用方法：  
 
 - Buffer.from(str[, encoding])：将一个字符串转换为 Buffer
 - Buffer.alloc(size)：创建指定大小的 Buffer
