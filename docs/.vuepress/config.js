@@ -10,6 +10,7 @@ module.exports = {
     ['meta', { name: 'author', content: 'Alex Wang' }],
     ['meta', { name: 'keywords', content: 'vuepress , 前端, 学习笔记' }],
   ],
+  base: "/docs/",
   themeConfig: {
     logo: '/images/favicon-theme.png',
     nav: require('./nav.js'),
