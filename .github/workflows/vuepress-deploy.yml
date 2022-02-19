@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
     - name: vuepress-deploy
       uses: web-wj/docs@main
@@ -14,4 +14,4 @@ jobs:
         TARGET_REPO: web-wj/docs
         TARGET_BRANCH: gh-pages
         BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: docs/.vuepress/dist
+        BUILD_DIR: docs/.vuepress/dist/
