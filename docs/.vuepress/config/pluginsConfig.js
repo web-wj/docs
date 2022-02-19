@@ -23,5 +23,8 @@ module.exports = [
   ],
   [
     '@vuepress/back-to-top',
-  ]
+  ],
+  ["vuepress-plugin-auto-sidebar", {
+    // options
+  }]
 ];

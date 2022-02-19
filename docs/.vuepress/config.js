@@ -1,6 +1,6 @@
 const headConfig = require('./config/headConfig');
 const pluginsConfig = require('./config/pluginsConfig');
-const navConfig = require("./config/navConfig.js");
+const composeNav = require("./config/composeNav");
 
 module.exports = {
 	title: "学习笔记",
@@ -9,8 +9,7 @@ module.exports = {
 	base: "/docs/",
 	themeConfig: {
 		logo: "/images/favicon-theme.png",
-		nav: navConfig,
-		sidebar: "auto",
+		nav: composeNav,
 		lastUpdated: "更新时间",
 	},
 	markdown: {
