@@ -1,5 +1,10 @@
 module.exports = [
   {
+    text: '首页',
+    link: '/',
+    target:'_self',
+  },
+  {
     text: '前端',
     link: '/frontend/',
     target:'_self',
