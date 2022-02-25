@@ -26,5 +26,9 @@ module.exports = [
   ],
   ["vuepress-plugin-auto-sidebar", {
     // options
+    sort: {
+      // `asc`、`desc`、`created_time_asc`、`created_time_desc`
+      mode: "asc"
+    }
   }]
 ];
