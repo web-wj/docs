@@ -20,8 +20,16 @@ module.exports = [
         "link": "/frontend/h5/"
       },
       {
+        "text": "Js",
+        "link": "/frontend/js/"
+      },
+      {
         "text": "Min Programs",
         "link": "/frontend/minPrograms/"
+      },
+      {
+        "text": "Network",
+        "link": "/frontend/Network/"
       },
       {
         "text": "Ng1",
