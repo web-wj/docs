@@ -346,7 +346,7 @@ import './y';
 <script type="module" src="foo.js"></script>
 ```
 
-上面代码在网页中插入一个模块foo.js，由于type属性设为module，所以浏览器知道这是一个 ES6 模块。浏览器对于带有 type="module" 的 <script> ，都是异步加载外部脚本，不会造成堵塞浏览器。相当于 defer 。
+上面代码在网页中插入一个模块foo.js，由于type属性设为module，所以浏览器知道这是一个 ES6 模块。浏览器对于带有 type="module" 的 `<script>` ，都是异步加载外部脚本，不会造成堵塞浏览器。相当于 defer 。
 
 ## 循环加载
 

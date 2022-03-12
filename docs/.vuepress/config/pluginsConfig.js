@@ -28,7 +28,7 @@ module.exports = [
     // options
     sort: {
       // `asc`、`desc`、`created_time_asc`、`created_time_desc`
-      mode: "asc"
+      mode: "created_time_asc"
     }
   }]
 ];
