@@ -22,7 +22,7 @@ module.exports = [
     },
   ],
   [
-    '@vuepress/back-to-top',
+    "@vuepress/back-to-top",
   ],
   ["vuepress-plugin-auto-sidebar", {
     // options
@@ -30,5 +30,6 @@ module.exports = [
       // `asc`、`desc`、`created_time_asc`、`created_time_desc`
       mode: "created_time_asc"
     }
-  }]
+  }],
+  ["@vuepress/plugin-medium-zoom"]
 ];

@@ -10,4 +10,7 @@ module.exports = [
     { name: "apple-mobile-web-app-status-bar-style", content: "black" },
   ],
   ["meta", { name: "msapplication-TileColor", content: "#000000" }],
+  ['script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js' }],
+  ['script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js' }],
+  ['link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css' }],
 ];
