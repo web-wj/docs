@@ -36,6 +36,10 @@ module.exports = [
         "link": "/frontend/ng1/"
       },
       {
+        "text": "Ts",
+        "link": "/frontend/ts/"
+      },
+      {
         "text": "Uniapp",
         "link": "/frontend/uniapp/"
       },
@@ -49,8 +53,16 @@ module.exports = [
     "text": "tools",
     "items": [
       {
+        "text": "Devtools",
+        "link": "/tools/devtools/"
+      },
+      {
         "text": "GIT",
         "link": "/tools/GIT/"
+      },
+      {
+        "text": "Linux",
+        "link": "/tools/linux/"
       }
     ]
   }
