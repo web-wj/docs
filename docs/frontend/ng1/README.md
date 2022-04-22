@@ -83,3 +83,15 @@ define [
     DemoController
   ]
 ```
+
+## ng-controller
+
+### 请求为什么会发送两次
+
+- 在对接系统的时候，定制化登录页面，发现了前端调了 oauth 接口，网上胡乱找了一通，有说是浏览器问题的，有说浏览器插件的问题，我甚至想到了网络不佳，网络传输中的问题，这个需要待考虑？为什么不是这个原因？网络传输会导致出现这样的问题吗？
+- 但我们这边好像不是这些原因，因为之前写 ng1 的页面的时候就没有发现这样的情况，所以应该还是代码中的问题。最后发现是 html 页面中使用了 ng-controller 的指令导致的，为什么会引发这样呢？
+
+    - 弄清楚之前的映射关系的实现，为什么在相同结构中创建 html 与 控制器，且注册控制器的名称最后的名字可作为 $scope 、this 使用？
+        - 映射关系是这样的，ng1 框架中的路由规则匹配中 controllerAs 以及 controller 已经将静态资源与控制器关联，所以在 html 中重复写会调用两次控制器中的方法。
+        - https://code.angularjs.org/1.2.32/docs/api/ng/directive/ngController
+        - Note that you can also attach controllers to the DOM by declaring it in a route definition via the $route service. A common mistake is to declare the controller again using ng-controller in the template itself. This will cause the controller to be attached and executed twice.
