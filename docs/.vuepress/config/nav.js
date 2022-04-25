@@ -63,6 +63,14 @@ module.exports = [
       {
         "text": "Linux",
         "link": "/tools/linux/"
+      },
+      {
+        "text": "Vuepress",
+        "link": "/tools/vuepress/"
+      },
+      {
+        "text": "包管理工具",
+        "link": "/tools/包管理工具/"
       }
     ]
   }
