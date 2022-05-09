@@ -36,6 +36,10 @@ module.exports = [
         "link": "/frontend/ng1/"
       },
       {
+        "text": "React",
+        "link": "/frontend/react/"
+      },
+      {
         "text": "Ts",
         "link": "/frontend/ts/"
       },
@@ -50,8 +54,21 @@ module.exports = [
     ]
   },
   {
+    "text": "reading",
+    "items": [
+      {
+        "text": "Reading",
+        "link": "/reading/"
+      }
+    ]
+  },
+  {
     "text": "tools",
     "items": [
+      {
+        "text": "Cli",
+        "link": "/tools/cli/"
+      },
       {
         "text": "Devtools",
         "link": "/tools/devtools/"
@@ -63,6 +80,10 @@ module.exports = [
       {
         "text": "Linux",
         "link": "/tools/linux/"
+      },
+      {
+        "text": "Vscode",
+        "link": "/tools/vscode/"
       },
       {
         "text": "Vuepress",
