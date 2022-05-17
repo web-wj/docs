@@ -4,8 +4,7 @@
 
 ## 脚手架的作用
 
-> 创建项目基础结构、提供项目规范和约定。
-
+- 创建项目基础结构、提供项目规范和约定。
 - 相同的文件组织结构
 - 相同的开发范式
 - 相同的模块依赖
@@ -14,31 +13,21 @@
 
 ## 常用的脚手架工具
 
-- create-react-app vue-cli angular-cli
+- create-react-app、vue-cli、angular-cli
+- Yeoman：用于 Web 应用程序的开源客户端脚手架工具。
+- Plop：Micro-generator framework that makes it easy for an entire team to create files with a level of uniformity.
 
-### Yeoman（老牌通用）
+## node 搭建 cli
 
-#### 基本使用
+- 需求：
+    - 可以根据模板拉取代码，并自动安装依赖。
+    - 约定路由设置。(类比 Nuxt.js)
 
-- 在全局安装 yo
-  - `npm install yo --global` 或 `yarn global add yo`
-- 安装对应的 generator
-  - `npm install generator-node --global` 或 `yarn global add generator-node`
- - 通过 yo 运行 generator
-  - `yo node`
+- 实现步骤：
+    1. 解释器类型 shebang `#!/usr/bin/env node` 。
+    2. `npm link` 把你的包链接到全局。
+    3. [commander](https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md) 库 —— 完整的 node.js 命令行解决方案。
 
-- generator-node 子集的生成器 - 变成 cli 应用
-  - `yo node:cli`
-  - `yarn link`
-  - `yarn`
-  - `my-module --help`
+- 拓展
 
-- 自定义 generator
-  - 本质就是一个 npm 模块
-  - ejs 语法
-
-### Plop
-
-项目过程中创建文件
-
-
+https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my
