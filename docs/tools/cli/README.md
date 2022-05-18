@@ -21,7 +21,7 @@
 
 - 需求：
     - 可以根据模板拉取代码，并自动安装依赖。
-    - 约定路由设置。(类比 Nuxt.js)
+    - 约定路由设置。(类似 Nuxt. js)
 
 - 实现步骤：
     1. 解释器类型 shebang `#!/usr/bin/env node` 。
@@ -29,6 +29,5 @@
     3. [commander](https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md) 库 —— 完整的 node.js 命令行解决方案。
 
 - 拓展
-
-<!-- - shebang
-https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my -->
+    - 可以做代码规范的功能。
+    - 拉取代码模块可以做优化。
