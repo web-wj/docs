@@ -5,6 +5,10 @@ module.exports = [
       {
         "text": "Node Js",
         "link": "/backend/NodeJs/"
+      },
+      {
+        "text": "服务端渲染",
+        "link": "/backend/服务端渲染/"
       }
     ]
   },
