@@ -1,4 +1,4 @@
-# websocket 
+# websocket
 
 > MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API
 

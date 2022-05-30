@@ -16,12 +16,8 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "Css3",
-        "link": "/frontend/css3/"
-      },
-      {
-        "text": "H5",
-        "link": "/frontend/h5/"
+        "text": "H5 C3",
+        "link": "/frontend/h5c3/"
       },
       {
         "text": "Js",
@@ -46,10 +42,6 @@ module.exports = [
       {
         "text": "Ts",
         "link": "/frontend/ts/"
-      },
-      {
-        "text": "Uniapp",
-        "link": "/frontend/uniapp/"
       },
       {
         "text": "Vue",

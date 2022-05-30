@@ -1,120 +1,111 @@
-# JWT 基础
+# 计算机网络基础
 
-Author: Connor Zhao
+## 分类
 
-## 什么是 JWT？
+### 三种交换方式
 
-JSON Web Token（JWT）是一个开放标准（[RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519)），它定义了一种紧凑的、独立的、URL 安全的编码方式，用于在各系统之间传输 JSON 对象格式的信息。该信息是具有数字签名的，可以被接收端验证和信任。
+| 电路交换（电信网，电话）| 报文交换 | 分组交换（互联网）|
+| ----------- | ----------- | ----------- |
+| 建立连接的 | 无需建立连接的 |无需建立连接的 |
+| 时延短 | 时延长 | 时延长 |
+| 无额外的信息传递 | 额外信息传递（整个报文发送） | 大量额外信息传递（每个分组都要） |
 
-JWT 包含三个部分：`Header`、`Payload`、`Signature`。将三个部分用 `.` 连接就形成了一个标准的 JWT 令牌。
+### 网络种类
 
-格式为： `${Header}.${Payload}.${Signature}`
+- 交换技术：电路交换网络、报文交换网络、分组交换网络
+- 范围：WAN 广域网 、LAN 局域网、MAN 城域网、PAN(WPAN)个域网
+- 拓扑：网状、总线、星型、环状
 
-可以在[官网](https://jwt.io/)进行 debug 与获取 JWT 签名验证的第三方库列表。
+## 网络的性能指标
 
-## Header
+- 速率：连接在计算机网络上的主机在数字信道上传送数据的速率。
+- 带宽：网络的通信线路传送数据的能力（单位时间内从网络中的某一个点到另外一个点所能通过的最高数据率,带宽的单位为 bit/s）
+- 吞吐量：单位时间内通过某个网络（通信线路、接口）的实际的数据量。
+- 时延：
+    - 发送时延：主机或路由器发送数据帧所需要的时间。
+    - 传播时延：电磁波在信道中传播一定的距离需要花费的时间。
+    - 处理时延：主机或者路由器接受到分组时要花费一定的时间去处理。
+    - 排队时延：分组在网络传输时，进入路由器后要在输入队列中排队等待处理，路由器确定转发接口后，还要在输出队列中排队等待转发，这就是排队时延。
+- 时延带宽积（传播时延）
+- 往返时间
+- 利用率：信道利用率并非越高越好，因为引起的时延也会迅速增加
+- 丢包率
 
-Header 通常由俩部分组成，token 类型和签名算法名称。
+## 网络体系
 
-例如：
+实际的TCP/IP协议簇
+| 应用层 | 运输层 | 网际层 | 网络接口层（物理层 + 数据链路层） |
+| ----------- | ----------- | ----------- |----------- |
+| 解决通过应用进程的交互来实现特定的网络应用的问题 | 解决进程之间基于网络的通信问题 | 解决分组在多个网络上传输以及路由的问题 |解决使用何种信号传输比特以及分组在一个网络上的传输问题 |
 
-```js
-{
-  'alg': "HS256",
-  'typ': "JWT",
-}
-```
+- 两台计算机连接，采用什么传输媒体（双绞线），什么物理接口（RJ45），什么信号（高低电平表示0、1比特）？物理层
 
-## Payload
+- 如何标识网络中的各主机（MAC地址），如何从数据中提取出地址数据来，信号冲突如何解决（争用信道）？数据链路层
 
-Payload 通常由三部分组成，registered，public，private：
+- 如何标识网络以及网络中的各主机（IP地址），如何转发分组（路由选择）？网络层
 
-- registered：注册声明，包含 token 的一些基础属性。
-  - iss: JWT 签发者
-  - sub: JWT 所面向的用户
-  - aud: 接收 JWT 的一方
-  - exp: JWT 的过期时间，这个过期时间必须要大于签发时间
-  - nbf: 定义在什么时间之前，该 JWT 都是不可用的.
-  - iat: JWT 的签发时间
-  - jti: JWT 的唯一身份标识，主要用来作为一次性 token，从而回避重放攻击。
-- public & private：用户自行定义，可以存放用户公开信息，用户授权范围之类，但不要存放例如密码之类的敏感信息。
+- 如何标识哪个进程处理分组？传输错误如何处理？运输层
 
-例如：
+- 通过不同的协议来完成特定的网络应用，万维网HTTP邮件SMTP文件FTP？应用层
 
-```js
-{
-	iat: 1628139780;
-	exp: 1628146980;
-	name: "connor.zhao";
-	phone: "17860785522";
-}
-```
+![](https://frontend-alex.gitee.io/drawing-bed/network/basis/network_osi.png)
 
-tips：JWT 中，Payload 部分只通过 Base64URL，可以认为这部分是完全明文的，所以不建议存放敏感信息。JWT 的职责的保证数据不被篡改，但不会负责数据的加密传输。
+## 物理层
 
-## Signature
+### 传输方式
 
-Signature 是对 Header 和 payload 的数字签名，用以确保信息的可靠性：
+- 串行传输、并行传输
+- 同步传输、异步传输
+- 单工通信、半双工通信、全双工通信
 
-常见的签名算法有：
+### 编码和调制
 
-- HS256(HMAC-SHA256) ：HMAC（Hash-based Message Authentication Code）基于加盐 Hash。
-- RS256(RSA-SHA256) ：RSA（Rivest-Shamir-Adleman Scheme） 基于大素数的分解因子。
-- ES256(ECDSA-SHA256)：ECDSA（Elliptic Curve Digital Signature Algorithm） 基于椭圆曲线密码。
+- 不归零编码（需要时钟信号）、归零编码（浪费编码资源）、曼彻斯特编码（变化的趋势代表比特）、差分曼彻斯特编码（码元开始和码元结束的状态趋势代表比特）
 
-签名算法选择建议：
+### 信道的极限容量
 
-- HS256 适合数据传输等场景，因为对称秘钥所以持有秘钥的双方是可以做出相同的签名，故需要保证双方系统对外应该是等价的，不然会出现安全问题。
-- RS256 与 ES256 同属非对称加密，适用于分布式系统和对第三方提供，使用私钥加密并开放公钥，其他系统无法签署同样的签名，但是所有人都可以验证签名的真伪性。
-- RSA 与 ECDSA 具体选择可以参考如下参数（单核单线程下测试运算时间）：
+奈氏准则 —— 香农公式
 
-  |           | Verify | Sign    |
-  | --------- | ------ | ------- |
-  | RSA-1024  | 12 us  | 511 us  |
-  | RSA-2048  | 30 us  | 3270 us |
-  | ECDSA-192 | 590 us | 490 us  |
+## 数据链路层
 
-  即除特殊情况下，RSA 都是优于 ECDSA 的，因为数字签名普遍形式为，单次签发多次校验，ECDSA 在校验签名时显得不太友好。
+### 封装成帧
 
-## 简单实现
+应用层发送数据，会经过计算机网络体系中的分层，不断为其数据添加协议标识，数据链路层在接收网络层封装后的协议数据单元后，会添加帧头、帧尾，再传递给物理层。
 
-以下代码是在 js 中对 JWT 标准的粗略实现：
+接收方的数据链路层如何从物理层中交付的比特流中提取出一个个的帧呢？
 
-```js
-import md5 from "js-md5";
-import { Base64 } from "js-base64";
-import { encrypt, decrypt } from "./rsa";
+- 帧头和帧尾中各含有一字节的帧定界。
+- 以太网式前导码加帧间间隔。
+- 发送帧之前会进行扫描，帧定界标识会发送错误，所以需要插入一个转义字符。
 
-const Header = Base64.encodeURI(JSON.stringify({ alg: "RS256", typ: "JWT" }));
+### 差错检测
 
-export const sign = (info) => {
-	const payload = Base64.encodeURI(JSON.stringify(info));
-	const signature = encrypt(md5.hex(`${Header}.${payload}`));
-	const jwt = `${Header}.${payload}.${signature}`;
-	return jwt;
-};
+帧尾中的检错码（FCS 帧检测序列）+ 检错算法来判断是非误码。
 
-export const verify = (token) => {
-	const [Header, payload, signature] = token.split(".");
-	const original = decrypt(signature);
-	return original === md5.hex(`${Header}.${payload}`);
-};
+- 奇偶校验：太扯了，不可靠，偶数位发送变化则不会检测出来。
+- 循环冗余校验（CRC）：复杂，可靠。
 
-export const getPayload = (token) => {
-	return JSON.parse(Base64.decode(token.split(".")[1]));
-};
-```
+### 可靠传输
 
-## JWT 可以做什么？
+丢弃传输错误的帧，如果是可靠的，则会采用一些手段来实现重新发送，来保证数据的完整性。
 
-- Authentication & Authorization （认证与授权）
+- 停止——等待协议（SW）
+    - 信道利用率太低，每发送一个数据分组需要等待一个确认码的传回时间。
+- 回退N帧协议（GBN）
+    - 通信信号不好时，信道利用率也不高。。。逻辑复杂，误码影响的牵连数据过多。
+- 选择重传协议（SR）
+    - ![](https://frontend-alex.gitee.io/drawing-bed/network/basis/SR.png)
 
-这是使用 JWT 的最常见场景。一旦用户登录，后续每个请求都将包含 JWT，允许用户访问该令牌允许的路由、服务和资源。例如群脉的一些 API 会在 HTTP 请求的 header 中，添加一条 `x-access-token` 用于存放 token 信息。
+### PPP 点对点协议
 
-- Information Exchange（信息交换）
+### ARP 协议
 
-对于安全的在各方之间传输信息而言，JSON Web Tokens 无疑是一种很好的方式，可以通过验证签名来验证信息是否被篡改。
+ip 地址 -> MAC 地址
 
-## 参考资料
+FAQ:
 
-- [Introduction to JSON Web Tokens](https://jwt.io/introduction)
+- 防止信号碰撞 CSMA/CD(共享式以太坊) CSMA/CA(802.11局域网)。
+
+- 网桥、交换机的工作原理？
+
+- 集线器（物理层互连设备）与交换机的区别？
