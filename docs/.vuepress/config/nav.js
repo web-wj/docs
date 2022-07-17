@@ -92,6 +92,10 @@ module.exports = [
       {
         "text": "包管理工具",
         "link": "/tools/包管理工具/"
+      },
+      {
+        "text": "小工具",
+        "link": "/tools/小工具/"
       }
     ]
   }

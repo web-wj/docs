@@ -8,7 +8,6 @@ module.exports = {
 	head: headConfig,
 	base: "/docs/",
 	themeConfig: {
-		logo: "/images/favicon-theme.png",
 		nav: composeNav,
 		lastUpdated: "更新时间",
 	},
