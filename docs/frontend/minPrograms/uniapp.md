@@ -19,7 +19,7 @@
 ### 微信小程序
 
 - [第三方代开发小程序相关概念](https://developers.weixin.qq.com/miniprogram/dev/devtools/ext.html#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91)
-- 绑定开发小程序 -> 小程序模版的开发和上传 -> 草稿箱 -> 添加到小程序模版库，获得模版ID -> [调用接口](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1489140610_Uavc4&token=&lang=zh_CN)，为旗下授权的小程序部署代码。
+- 绑定开发小程序 -> 小程序模版的开发、打包和上传 -> 草稿箱 -> 添加到小程序模版库，获得模版ID -> [调用接口](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1489140610_Uavc4&token=&lang=zh_CN)，为旗下授权的小程序部署代码。
 - [miniprogram-ci](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
 ## 杂烩
