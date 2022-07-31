@@ -54,6 +54,19 @@ module.exports = [
     ]
   },
   {
+    "text": "interview",
+    "items": [
+      {
+        "text": "Base",
+        "link": "/interview/base/"
+      },
+      {
+        "text": "Projects",
+        "link": "/interview/projects/"
+      }
+    ]
+  },
+  {
     "text": "reading",
     "items": [
       {
