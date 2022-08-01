@@ -28,21 +28,23 @@
   - 监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；
   - 当一个属性发生变化时，需要执行对应的操作；一对多；
   - 监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作
-- 路由的模式
-- 路由懒加载的实现
-- Vuex 状态管理的理解
+- [路由的模式](https://juejin.cn/post/7037282729485959204)
+- [路由懒加载的实现](https://blog.csdn.net/czj1049561601/article/details/114120236)
+- [Vuex 状态管理的理解](https://web-wj.github.io/docs/frontend/vue/vue2.html#vuex-state)
+  - 可使用插件 [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate#readme)，解决之前繁琐的使用 vuex + sessionStorage 来避免页面刷新导致的 vuex 数据丢失的问题。 
 - vuex 的 mutation 和 action 的区别？mutation 可以做异步操作吗？
+- vue 路由守卫函数。
 
 ### vue3
 
-- vue2 和 vue3 的区别？
+- [vue2 和 vue3 的区别？](https://blog.csdn.net/weixin_43932097/article/details/121512132)
 
 ## webpack & vite
 
 - 二者区别？
 - webpack 的构建原理
-- webpack 与 gulp 的区别？
 - webpack 如何开启一个服务？
+- webpack 与 gulp 的区别？
 
 ## network
 
@@ -62,6 +64,8 @@
 - 防抖、节流的实现？
 - call bind apply ?
 - this 的指向问题？
+- 闭包问题？
+- 原型链理解。
 
 ## css
 
@@ -90,4 +94,5 @@
 - 性能优化的手段
 - 移动端适配的技术
 - 命名规范
+- [后端一次给你10万条数据,如何优雅展示]（https://juejin.cn/post/6986237263164211207）
 
