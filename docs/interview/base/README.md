@@ -34,10 +34,16 @@
   - 可使用插件 [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate#readme)，解决之前繁琐的使用 vuex + sessionStorage 来避免页面刷新导致的 vuex 数据丢失的问题。 
 - vuex 的 mutation 和 action 的区别？mutation 可以做异步操作吗？
 - vue 路由守卫函数。
+- 动态组件 Vue.extend
+- vue 插槽的理解？
+- 自定义指令？
+  - v-action 权限按钮
 
 ### vue3
 
 - [vue2 和 vue3 的区别？](https://blog.csdn.net/weixin_43932097/article/details/121512132)
+- setup 组合式 API
+  - 没有 this 
 
 ## webpack & vite
 
@@ -45,32 +51,64 @@
 - webpack 的构建原理
 - webpack 如何开启一个服务？
 - webpack 与 gulp 的区别？
+- webpack 优化建议
+- [vue-loader](https://juejin.cn/post/6994468137584295973) 
+- 如何保证浏览器中的代码是最新的？热更新的问题？HMR
+- less-loader 
+- ejs 模板 + HtmlWebpackPlugin 使用
 
 ## network
 
 - 跨域问题，解决方案
 - 从 url 输入到页面渲染呈现的过程
-- http 请求的头部格式，内容协商
+- http 请求的头部
 - 浏览器的缓存机制是什么？etag vs last-modified ?
 - WebSocket 的理解及应用？
 
 ## es6
 
+- 新特性
+- 箭头函数的特点
 - es6 中 promise 的理解，async await promise 的实现原理
+  - 解决地狱回调问题
+  - promise.all 返回值 并发执行 new Promise 同步？
 - 事件循环机制
+- proxy 可以监听嵌套对象吗？
 
 ## js
 
+- [封装过 axios 吗？](https://blog.csdn.net/weixin_44475093/article/details/111878425)
+- 深浅拷贝 Object.assign()
 - 防抖、节流的实现？
 - call bind apply ?
 - this 的指向问题？
 - 闭包问题？
 - 原型链理解。
+- 数据类型 
+- 设计模式
+  - 工厂模式
+  - 单例模式
+  - 装饰器
+- 递归思想，判断数组中是否存在某个值？
+- 扁平化数组
+  - flat 
+- 如何把一个数组转成树？
+- null == undefined
+- setTimeout setInterval
+  - 使用上的坑：防抖、节流| 交叉，清不掉
+  - 二维码登录 + 检测用户是否扫码（轮询调查询），使用 setTimeout 模拟 setInterval ，卡顿阻塞 加到事件队列 中去
+- 事件委托
+  - 利用事件冒泡，jquery 中有些 dom 是请求后生成的，不想动态绑定事件
 
 ## css
 
 - display:none vs visibility:hidden vs opacity: 0
 - 什么是 bfc ？清除浮动的手段有哪些？
+- 盒子模型 
+- 水平垂直
+- 重绘回流 
+- 响应式布局
+- flex: 0 1 auto     flex: 1
 
 ## html
 
@@ -85,14 +123,28 @@
 - 有哪些是 webpack 可以处理但是 gulp 却不行的？
 - 防抖、节流的应用场景?
 - 网络请求卡顿如何处理？
+- 瀑布流布局 + 懒加载 
+  - 图片太大了，高度没获取 如何定高？ 做的小点，后端返回高度的列表做骨架。
 - 如何做权限控制的？
+  - add routers 方式添加动态路由
+- 分页，跳到其他页面，记录当前页面 —— 可以用本地缓存或者 keep-alive
+- 二维码登录功能
   
 ## 其他
 
 - 如何构建一个多模块的项目？（！！！）
+  - 自己搭 cli 工具的功能啥的？
 - 发布-订阅者模式
+  - 事件总程 - 两个函数的通信
+  - addeventlistener 消息推送
 - 性能优化的手段
 - 移动端适配的技术
+- package.json 作用
 - 命名规范
+- 浏览器中 dom 和 element 的关系？判断节点类型？nodeType 为几？
+- [浏览器的结构](https://www.jianshu.com/p/f5141d52c3f0)
+  - 多进程 tab 页(缓存、浏览器、网络、渲染、GPU 等进程......)
+  - 单进程 性能，安全（获取其他 tab 页面）
 - [后端一次给你10万条数据,如何优雅展示]（https://juejin.cn/post/6986237263164211207）
+
 
