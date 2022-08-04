@@ -36,14 +36,21 @@
 - vue 路由守卫函数。
 - 动态组件 Vue.extend
 - vue 插槽的理解？
-- 自定义指令？
+- 自定义指令的两个参数？
+  - 名称+配置（bind inserted update | unbind componentUpdated）
+  - 获取表达式  
   - v-action 权限按钮
+- this.$observable Vue.observable 做了什么？
+- 动态组件、场景？左树右表？数组表示树、二叉树
+- 堆排序
 
 ### vue3
 
 - [vue2 和 vue3 的区别？](https://blog.csdn.net/weixin_43932097/article/details/121512132)
 - setup 组合式 API
   - 没有 this 
+- v-model 的修饰符 .lazy (input -> change)
+- 封装自定义组件 v-model 的上面？往出抛 input 还是 change 事件？
 
 ## webpack & vite
 
@@ -56,6 +63,7 @@
 - 如何保证浏览器中的代码是最新的？热更新的问题？HMR
 - less-loader 
 - ejs 模板 + HtmlWebpackPlugin 使用
+- treeshaking 什么?
 
 ## network
 
@@ -64,6 +72,8 @@
 - http 请求的头部
 - 浏览器的缓存机制是什么？etag vs last-modified ?
 - WebSocket 的理解及应用？
+- xss 攻击？场景？评论 + 转义
+- http 1.0 2.0 区别？
 
 ## es6
 
@@ -83,8 +93,10 @@
 - call bind apply ?
 - this 的指向问题？
 - 闭包问题？
-- 原型链理解。
+- 原型链继承？
+- 静态属性？
 - 数据类型 
+- new 一个对象操作？
 - 设计模式
   - 工厂模式
   - 单例模式
@@ -121,7 +133,7 @@
 
 - 完成商品列表渲染的整个过程
 - 有哪些是 webpack 可以处理但是 gulp 却不行的？
-- 防抖、节流的应用场景?
+- 防抖、节流、锁的应用场景?
 - 网络请求卡顿如何处理？
 - 瀑布流布局 + 懒加载 
   - 图片太大了，高度没获取 如何定高？ 做的小点，后端返回高度的列表做骨架。
@@ -129,6 +141,12 @@
   - add routers 方式添加动态路由
 - 分页，跳到其他页面，记录当前页面 —— 可以用本地缓存或者 keep-alive
 - 二维码登录功能
+- 提高 vue 项目的加载速度？
+  - 如何量化？减少请求
+  - 接口慢？渲染慢？->调试工具调看
+- 画板的回退功能？
+  - dom 元素的变化？
+- 
   
 ## 其他
 
@@ -146,5 +164,4 @@
   - 多进程 tab 页(缓存、浏览器、网络、渲染、GPU 等进程......)
   - 单进程 性能，安全（获取其他 tab 页面）
 - [后端一次给你10万条数据,如何优雅展示]（https://juejin.cn/post/6986237263164211207）
-
-
+- vue-element-admin vben
