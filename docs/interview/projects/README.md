@@ -57,4 +57,23 @@
   - 外面主动探测，里面不往外发？
   - iframe - 跨域问题 - 统一一级域名
 - scrm - 智能营销、全域会员、私域商城（小程序）
-  - 鉴权登录的闭环 set-cookie 存在 token (post ok)
+  - 鉴权登录的闭环 set-cookie 存在 token (post ok) 
+  - 
+
+## 项目中引申的知识点：
+
+- oem 介绍一下
+- webpack grunt 区别
+- 构建原理 - 常用的 loader 、plugin - 开启服务
+- git 解决冲突 - reset、revert 区别
+- 会员注册 - 主题色、自定义导航、页面装修 - 接口
+- iframe - 跨域 - 菜单运作 
+- 自定义 cli 工具的一些功能 - 主题色开发 
+- 倒计时 - 购物车 - 搜索订单
+- 移动端适配方案
+
+- [介绍前端项目](https://zhuanlan.zhihu.com/p/450873310)
+
+## 项目难点
+
+- 租户级别的菜单显隐

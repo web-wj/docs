@@ -10,6 +10,7 @@
 - [nextTick 的理解](https://vue3js.cn/interview/vue/nexttick.html#%E4%B8%80%E3%80%81nexttick%E6%98%AF%E4%BB%80%E4%B9%88)
 - [vue 的渲染机制](https://staging-cn.vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom)
 - [父子组件的渲染顺序](https://blog.csdn.net/weixin_34344677/article/details/91381387)
+  - 为什么？插槽里放一个组件（父子组件）？
 - [响应式原理的理解](https://cn.vuejs.org/v2/guide/reactivity.html)
   - vue 采用数据劫持和发布-订阅者模式，通过 object.defineproperty 来劫持每个属性的 setter、getter ，在数据变动的时候给发送消息给订阅者 watcher,让其执行更新函数来重新渲染组件。
 - [双向数据绑定的原理](https://vue3js.cn/interview/vue/bind.html#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A)
@@ -21,18 +22,19 @@
 - v-if vs v-show
   - visibility:hidden 控制显示隐藏
 - methods vs computed
-  - 是否存在缓存。methods没有缓存，调用相同的值计算还是会重新计算。competed有缓存，在值不变的情况下不会再次计算，而是直接使用缓存中的值。
+  - 是否存在缓存。methods 没有缓存，调用相同的值计算还是会重新计算。competed 有缓存，在值不变的情况下不会再次计算，而是直接使用缓存中的值。
 - watch vs computed
   - 不支持缓存，数据变，直接会触发相应的操作
-  - watch支持异步；
+  - watch 支持异步；computed 会 return 不支持异步。（异步做了没意义，之前就 return 了）
   - 监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；
   - 当一个属性发生变化时，需要执行对应的操作；一对多；
-  - 监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作
+  - 监听数据必须是 data 中声明过或者父组件传递过来的 props 中的数据，当数据变化时，触发其他操作
 - [路由的模式](https://juejin.cn/post/7037282729485959204)
 - [路由懒加载的实现](https://blog.csdn.net/czj1049561601/article/details/114120236)
 - [Vuex 状态管理的理解](https://web-wj.github.io/docs/frontend/vue/vue2.html#vuex-state)
   - 可使用插件 [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate#readme)，解决之前繁琐的使用 vuex + sessionStorage 来避免页面刷新导致的 vuex 数据丢失的问题。 
 - vuex 的 mutation 和 action 的区别？mutation 可以做异步操作吗？
+- vuex 开命名空间 - 不开的话挂在全局的上（mutation action）- 两个命名空间互相调 mutation action  mutation action 内部的第三个参数 { root: true }
 - vue 路由守卫函数。
 - 动态组件 Vue.extend
 - vue 插槽的理解？
@@ -43,6 +45,13 @@
 - this.$observable Vue.observable 做了什么？
 - 动态组件、场景？左树右表？数组表示树、二叉树
 - 堆排序
+- Object.definedProperty 接受的参数 - proxy 代理 
+- 父组件如何拿子组件的实例？
+  - ref 父组件 mounted 拿子组件
+- 全局注册、局部注册的区别
+- mvvm 原理
+- this.data.xxx 如何代理到外面 this.xxx 一个没有声明的数据，放到模板中，报错值不存在（不在 vue 配置中存在）
+- 依赖注入？provide inject ?
 
 ### vue3
 
@@ -73,7 +82,9 @@
 - 浏览器的缓存机制是什么？etag vs last-modified ?
 - WebSocket 的理解及应用？
 - xss 攻击？场景？评论 + 转义
-- http 1.0 2.0 区别？
+- http 1.0 / 1.1 / 2.0 区别？
+  - 1.0 和 1.1 长连接 + 缓存增加了一些指标 + 错误码增多了
+  - 1.1 和 2.0 使用基于文本格式 -> 使用二进制格式 , 多路复用(keep-alive)
 
 ## es6
 
@@ -88,11 +99,18 @@
 ## js
 
 - [封装过 axios 吗？](https://blog.csdn.net/weixin_44475093/article/details/111878425)
+  - axios 相应拦截 ，成功里面 throw error 是走哪？then 还是 catch ？
+  - 响应成功，业务失败 走 catch (零售小程序中营销活动)
+  - new Promise().then().then() 第二个 promise 返回的值 那如果失败的结果走哪？.catch() ？ 后面还可以 .then() 吗？
+  - 错误拦截器捕获所有的错误，不想走 catch  | return new promise() padding 不需要处理失败了。17k
 - 深浅拷贝 Object.assign()
 - 防抖、节流的实现？
+  - 多个点击相当于一次，防止用户多次处理（vue once）
 - call bind apply ?
 - this 的指向问题？
 - 闭包问题？
+  - 应用：防抖按钮
+  - 垃圾回收机制 函数作用域内部，自己定义的变量没有使用
 - 原型链继承？
 - 静态属性？
 - 数据类型 
@@ -146,12 +164,17 @@
   - 接口慢？渲染慢？->调试工具调看
 - 画板的回退功能？
   - dom 元素的变化？
-- 
+- 服务端渲染逻辑？vue seo 优化，
+- 封装组件库 .native() 在外面监听组件没有抛出的问题
+- 处理树形数据？ -> 递归转数组
   
 ## 其他
 
 - 如何构建一个多模块的项目？（！！！）
   - 自己搭 cli 工具的功能啥的？
+- eval('字符串') 可以执行字符串！！！
+- token 过期 -> 重新登录
+- 单点登录 - 二级分发的 - ticket
 - 发布-订阅者模式
   - 事件总程 - 两个函数的通信
   - addeventlistener 消息推送
