@@ -34,6 +34,7 @@
 - [Vuex 状态管理的理解](https://web-wj.github.io/docs/frontend/vue/vue2.html#vuex-state)
   - 可使用插件 [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate#readme)，解决之前繁琐的使用 vuex + sessionStorage 来避免页面刷新导致的 vuex 数据丢失的问题。 
 - vuex 的 mutation 和 action 的区别？mutation 可以做异步操作吗？
+  - 多个组件共享状态、通信问题
 - vuex 开命名空间 - 不开的话挂在全局的上（mutation action）- 两个命名空间互相调 mutation action  mutation action 内部的第三个参数 { root: true }
 - vue 路由守卫函数。
 - 动态组件 Vue.extend
