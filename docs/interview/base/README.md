@@ -66,6 +66,7 @@
 
 - 二者区别？
 - webpack 的构建原理
+  - 初始化 - 编译 - 输出
 - webpack 如何开启一个服务？
 - webpack 与 gulp 的区别？
 - webpack 优化建议
@@ -91,20 +92,23 @@
 
 - 新特性
 - 箭头函数的特点
+- 事件循环机制 
+  - 宿主环境 + 5 个线程 + 事件队列内存 + 执行栈 event-loop
 - es6 中 promise 的理解，async await promise 的实现原理
-  - 解决地狱回调问题
+  - 异步处理场景 + 解决地狱回调问题 + promise 对象 + 两个阶段三个状态
+  - pending -> fulfilled、rejected 挂起到成功称之为 resolve 失败为 reject 
   - promise.all 返回值 并发执行 new Promise 同步？
-- 事件循环机制
 - proxy 可以监听嵌套对象吗？
 
 ## js
 
 - [封装过 axios 吗？](https://blog.csdn.net/weixin_44475093/article/details/111878425)
-  - axios 相应拦截 ，成功里面 throw error 是走哪？then 还是 catch ？
-  - 响应成功，业务失败 走 catch (零售小程序中营销活动)
-  - new Promise().then().then() 第二个 promise 返回的值 那如果失败的结果走哪？.catch() ？ 后面还可以 .then() 吗？
-  - 错误拦截器捕获所有的错误，不想走 catch  | return new promise() padding 不需要处理失败了。17k
+  - 设置接口请求前缀，域名，开发环境需要在 devSever 中做 proxy 处理，实现跨域。
+  - 设置请求头与超时时间
+  - 请求拦截器 - 请求拦截器可以在每个请求里加上 token，做了统一处理后维护起来也方便。（？？？额）
+  - 响应拦截器 - 响应拦截器可以在接收到响应后先做一层操作，如根据状态码判断登录状态、授权。
 - 深浅拷贝 Object.assign()
+- [typeof 与 instanceof 区别](https://vue3js.cn/interview/JavaScript/typeof_instanceof.html#%E4%B8%80%E3%80%81typeof)
 - 防抖、节流的实现？
   - 多个点击相当于一次，防止用户多次处理（vue once）
 - call bind apply ?

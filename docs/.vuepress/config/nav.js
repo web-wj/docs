@@ -16,6 +16,10 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
+        "text": "Es6",
+        "link": "/frontend/es6/"
+      },
+      {
         "text": "H5 C3",
         "link": "/frontend/h5c3/"
       },
