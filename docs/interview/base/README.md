@@ -43,12 +43,16 @@
   - 名称+配置（bind inserted update | unbind componentUpdated）
   - 获取表达式  
   - v-action 权限按钮
+- 如何理解 vue 单向数据流?
 - this.$observable Vue.observable 做了什么？
 - 动态组件、场景？左树右表？数组表示树、二叉树
 - 堆排序
 - Object.definedProperty 接受的参数 - proxy 代理 
 - 父组件如何拿子组件的实例？
   - ref 父组件 mounted 拿子组件
+- 子组件监听父组件数据变化  prop + watch handler
+- $route $router
+  - this.$router 还可以怎么获取?
 - 全局注册、局部注册的区别
 - mvvm 原理
 - this.data.xxx 如何代理到外面 this.xxx 一个没有声明的数据，放到模板中，报错值不存在（不在 vue 配置中存在）
@@ -56,6 +60,7 @@
 - v-model 原理
 - 如何包装一个组件？
   - 传值（$parent,ref）
+- vuex state 中是一个对象，想修改值 state.user.name = xxx {...state.user, name: 'xiaoming' } 保证响应式，应该只能支持2层
 
 ### vue3
 
@@ -195,4 +200,9 @@
   - 多进程 tab 页(缓存、浏览器、网络、渲染、GPU 等进程......)
   - 单进程 性能，安全（获取其他 tab 页面）
 - [后端一次给你10万条数据,如何优雅展示]（https://juejin.cn/post/6986237263164211207）
+- 双 token refresh token 无感刷新 token
 - vue-element-admin vben
+
+- 技术栈太不全面了 —— vue3 react 小程序 ts
+
+
