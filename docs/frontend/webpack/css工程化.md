@@ -159,3 +159,18 @@ module.exports = {
   ```
 
 - 编写代码的时候需要安装`stylelint`插件才可以显示编写的错误。
+
+## 抽离 css 文件
+
+### mini-css-extract-plugin
+
+> plugin 生成 css 文件(根据 chunk 生成的)
+> loader 接收转化 css-loader 输出的文件
+
+- 解决打包后的代码中的 路径问题
+  
+```js
+ : {
+  public: '/'
+}
+```
