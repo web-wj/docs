@@ -165,7 +165,7 @@ module.exports = {
 ### mini-css-extract-plugin
 
 > plugin 生成 css 文件(根据 chunk 生成的)
-> loader 接收转化 css-loader 输出的文件
+> loader 接收转化 css-loader 输出的文件，负责记录要生成的 css 文件的内容，同时导出开启 css-module 后的样式对象
 
 - 解决打包后的代码中的 路径问题
   
