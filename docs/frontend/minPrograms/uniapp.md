@@ -27,3 +27,9 @@
 - http://underscorejs.org/ 小程序端使用的类似 lodash 库
 - [postcss-px2rem](https://juejin.cn/post/6844903828408533000) 移动端适配的方案。
 - 视频插件、订阅等类似的功能需要在公众平台中进行配置，而且注意注册插件时候使用的 appid 。
+
+## 报错
+
+- xhuilder 正常编译，到小程序端显示 `TypeError: Cannot set property '__file' of undefined`  错误，暂不知道怎么解决？
+    - 原因是我们的项目是在原来导出模板对象的基础上，将正常的配置项作为参数传进去，然后再通过封装的 page app components 等方法来调用，最后返回一个新的重写各种方法的对象。
+    - 但是，修改 cli 部署命令的时候把导出对象的语句给条件编译了，所有没有导出一个正常的对象。内部由于一些调用问题，所以就出现了这个报错。。。。
