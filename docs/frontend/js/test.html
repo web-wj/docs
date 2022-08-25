@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="throttleBtn">节流点击</button>
+  <script>
+    const btn = document.getElementById('throttleBtn');
+    btn.onclick(throttleClick(() => {
+      console.log('n 秒内只执行一次的节流函数！');
+    }, 5));
+    // 在 n 秒内只执行一次。若重复触发，则不生效。
+    function throttleClick(fn, n){
+      let startTime = new Date().getTime();
+      fn.call(this, ...args);
+    }
+  </script>
+</body>
+</html>
