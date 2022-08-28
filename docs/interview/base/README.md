@@ -202,6 +202,8 @@
 - [后端一次给你10万条数据,如何优雅展示]（https://juejin.cn/post/6986237263164211207）
 - 双 token refresh token 无感刷新 token
 - vue-element-admin vben
+- 负载均衡的几种方案。
+- babel 的实现原理。
 
 - 技术栈太不全面了 —— vue3 react 小程序 ts
 
