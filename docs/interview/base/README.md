@@ -205,6 +205,6 @@
 - 负载均衡的几种方案。
 - babel 的实现原理。
 
-- 技术栈太不全面了 —— vue3 react 小程序 ts
+- 技术栈太不全面了 —— vue3 react 小程序 ts uniapp 
 
 
