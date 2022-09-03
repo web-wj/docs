@@ -1,4 +1,4 @@
-# Vue2
+# vue2
 
   1. 引入vue.js
       > 官网：vuejs.org

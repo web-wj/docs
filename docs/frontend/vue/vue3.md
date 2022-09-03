@@ -1,6 +1,77 @@
-# Vue 3 Migration Guide
+# vue3
 
-## 静态提升
+## 搭建工程
+
+1. vue-cli 
+2. vite 构建工具 - 不仅仅是脚手架
+
+`npm init vite-app vue3-app-vite` 每次使用最新的 vite 安装项目
+
+差异：
+  - index.html 的位置，之前是 Public vite 是根目录下。
+
+## vue3 不同点:
+  1. vue3 不存在构造函数 Vue , 而是具名导出生成实例。
+    - `Uncaught SyntaxError: The requested module '/@modules/vue.js' does not provide an export named 'default'`
+  2. vue3 this 指向是一个代理，而不是组件实例。
+  3. composition api 区别与 option api, 相同逻辑(数据，方法)放在一起，便于阅读。
+
+## composition-api 
+
+1. setup 方法会在**所有**生命周期钩子函数**之前**自动执行！
+  - this 指向 undefined !
+  - 返回的对象属性会被附着在组件实例上。类似 data , methods ...
+  - 数据改变了，但是响应式没有生效。 -> ref 封装到一个对象中，value(...访问器)
+  - setup 里面，`const count = ref(0)` 是一个对象，实例中是 count.value !
+  - props 属性外，其余都不怎么需要了？ 
+
+2. ref 响应式
+3. watchEffect 监控副作用
+  - `watchEffect(() => {})`
+  - 只要用到响应式数据，说明这个函数依赖这个响应数据，一旦变化，则重新运行这个函数。
+  - mixin 可以达到聚合的目的，但是 mixin 之前互相独立的，有个参数无法处理。
+4. 组件里面注册监听 hash 变化 - 需要生命周期 
+  - onMounted 组件挂载完成的生命周期
+  - onUnmounted 组件销毁过后的生命周期函数
+5. 计算属性 
+  -   `computed({ get(){}, set(val){}})` 或者 `computed(()=>{})`
+
+## vite
+
+> vite: https://github.com/vitejs/vite
+
+- 面试题：谈谈你对vite的理解，最好对比webpack说明
+
+webpack 原理图
+
+![webpack 原理图](./imgs/webpack.png)
+
+vite 原理图
+
+![vite 原理图](./imgs/vite.png)
+
+<!-- @vue/compiler-sfc -->
+
+> 面试题答案：
+
+- webpack会先打包，然后启动开发服务器，请求服务器时直接给予打包结果。
+- 而vite是直接启动开发服务器，请求哪个模块再对该模块进行实时编译。
+- 由于现代浏览器本身就支持ES Module，会自动向依赖的Module发出请求。vite充分利用这一点，将开发环境下的模块文件，就作为浏览器要执行的文件，而不是像webpack那样进行打包合并。
+- 由于vite在启动的时候不需要打包，也就意味着不需要分析模块的依赖、不需要编译，因此启动速度非常快。当浏览器请求某个模块时，再根据需要对模块内容进行编译。这种按需动态编译的方式，极大的缩减了编译时间，项目越复杂、模块越多，vite的优势越明显。
+- 在热更新（HMR）方面，当改动了一个模块后，仅需让浏览器重新请求该模块即可，不像webpack那样需要把该模块的相关依赖模块全部编译一次，效率更高。
+- 当需要打包到生产环境时，vite使用传统的rollup进行打包，因此，vite的主要优势在开发阶段。另外，由于vite利用的是ES Module，因此在代码中不可以使用CommonJS
+
+### 预编译(DLL)
+
+### 支持 es module ，出现大量请求！
+
+### vite 自带 rollup 上生产环境
+
+### 配置开发阶段代理
+
+## 性能提升
+
+### 静态提升
 
 下面的静态节点会被提升
 
@@ -38,7 +109,7 @@ function render(){
 }
 ```
 
-## 预字符串化
+### 预字符串化
 
 ```html
 <div class="menu-bar-container">
@@ -64,11 +135,11 @@ function render(){
 const _hoisted_2 = _createStaticVNode("<div class=\"logo\"><h1>logo</h1></div><ul class=\"nav\"><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li><li><a href=\"\">menu</a></li></ul>")
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/20200929170205.png" alt="image-20200929170205828" style="zoom:50%;" />
+![vue2-vnode](./imgs/vue2-vnode.png)
 
-<img src="http://mdrs.yuanjin.tech/img/20200929170304.png" alt="image-20200929170304873" style="zoom:50%;" />
+![vue3-vnode](./imgs/vue3-vnode.png)
 
-## 缓存事件处理函数
+### 缓存事件处理函数
 
 ```html
 <button @click="count++">plus</button>
@@ -92,7 +163,7 @@ render(ctx, _cache){
 }
 ```
 
-## Block Tree
+### Block Tree
 
 vue2在对比新旧树的时候，并不知道哪些节点是静态的，哪些是动态的，因此只能一层一层比较，这就浪费了大部分时间在比对静态节点上
 
@@ -109,11 +180,11 @@ vue2在对比新旧树的时候，并不知道哪些节点是静态的，哪些�
 </form>
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/20200929172002.png" alt="image-20200929172002761" style="zoom:50%;" />
+![block1](./imgs/block-tree1.png)
 
-<img src="http://mdrs.yuanjin.tech/img/20200929172555.png" alt="image-20200929172555681" style="zoom:50%;" />
+![block1](./imgs/block-tree2.png)
 
-## PatchFlag
+### PatchFlag
 
 vue2在对比每一个节点时，并不知道这个节点哪些相关信息会发生变化，因此只能将所有信息依次比对
 
@@ -123,11 +194,11 @@ vue2在对比每一个节点时，并不知道这个节点哪些相关信息会�
 </div>
 ```
 
-<img src="http://mdrs.yuanjin.tech/img/20200929172805.png" alt="image-20200929172805674" style="zoom:50%;" />
+![patchflag](./imgs/patchflag.png)
 
 全局的指令、混合、插件、组件等等，都会受到影响。
 
-## 去掉了Vue构造函数
+### 去掉了 Vue 构造函数
 
 在过去，如果遇到一个页面有多个`vue`应用时，往往会遇到一些问题
 
@@ -164,7 +235,7 @@ vue2在对比每一个节点时，并不知道这个节点哪些相关信息会�
 
 > 更多vue应用的api：https://v3.vuejs.org/api/application-api.html
 
-## 组件实例中的API
+### 组件实例中的API
 
 在`vue3`中，组件实例是一个`Proxy`，它仅提供了下列成员，功能和`vue2`一样
 
@@ -172,13 +243,13 @@ vue2在对比每一个节点时，并不知道这个节点哪些相关信息会�
 
 方法：https://v3.vuejs.org/api/instance-methods.html
 
-## 对比数据响应式
+### 对比数据响应式
 
 vue2和vue3均在相同的生命周期完成数据响应式，但做法不一样
 
-<img src="http://mdrs.yuanjin.tech/img/20201014155433.png" alt="image-20201014155433311" style="zoom:50%;" />
+![vue2-vue3](./imgs/vue2-vue3.png)
 
-### 面试题参考答案
+#### 面试题参考答案
 
 面试题1：为什么vue3中去掉了vue构造函数？
 
