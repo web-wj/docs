@@ -10,13 +10,182 @@
 差异：
   - index.html 的位置，之前是 Public vite 是根目录下。
 
-## vue3 不同点:
+## vue3 不同点
+
   1. vue3 不存在构造函数 Vue , 而是具名导出生成实例。
     - `Uncaught SyntaxError: The requested module '/@modules/vue.js' does not provide an export named 'default'`
   2. vue3 this 指向是一个代理，而不是组件实例。
   3. composition api 区别与 option api, 相同逻辑(数据，方法)放在一起，便于阅读。
 
-## composition-api 
+### 去掉了 Vue 构造函数
+
+在过去，如果遇到一个页面有多个`vue`应用时，往往会遇到一些问题
+
+```html
+<!-- vue2 -->
+<div id="app1"></div>
+<div id="app2"></div>
+<script>
+  Vue.use(...); // 此代码会影响所有的vue应用
+  Vue.mixin(...); // 此代码会影响所有的vue应用
+  Vue.component(...); // 此代码会影响所有的vue应用
+
+	new Vue({
+    // 配置
+  }).$mount("#app1")
+
+  new Vue({
+    // 配置
+  }).$mount("#app2")
+</script>
+```
+
+在`vue3`中，去掉了`Vue`构造函数，转而使用`createApp`创建`vue`应用
+
+```html
+<!-- vue3 -->
+<div id="app1"></div>
+<div id="app2"></div>
+<script>
+	createApp(根组件).use(...).mixin(...).component(...).mount("#app1")
+  createApp(根组件).mount("#app2")
+</script>
+```
+
+> 更多vue应用的api：https://v3.vuejs.org/api/application-api.html
+
+### 组件实例中的API
+
+在`vue3`中，组件实例是一个`Proxy`，它仅提供了下列成员，功能和`vue2`一样
+
+属性：https://v3.vuejs.org/api/instance-properties.html
+
+方法：https://v3.vuejs.org/api/instance-methods.html
+
+### 对比数据响应式
+
+vue2和vue3均在相同的生命周期完成数据响应式，但做法不一样
+
+![vue2-vue3](./imgs/vue2-vue3.png)
+
+#### 面试题参考答案
+
+面试题1：为什么vue3中去掉了vue构造函数？
+
+vue2的全局构造函数带来了诸多问题：
+
+1. 调用构造函数的静态方法会对所有vue应用生效，不利于隔离不同应用
+2. vue2的构造函数集成了太多功能，不利于tree shaking，vue3把这些功能使用普通函数导出，能够充分利用tree shaking优化打包体积
+3. vue2没有把组件实例和vue应用两个概念区分开，在vue2中，通过new Vue创建的对象，既是一个vue应用，同时又是一个特殊的vue组件。vue3中，把两个概念区别开来，通过createApp创建的对象，是一个vue应用，它内部提供的方法是针对整个应用的，而不再是一个特殊的组件。
+
+面试题2：谈谈你对vue3数据响应式的理解
+
+1. vue3 不再使用 Object.defineProperty 的方式定义完成数据响应式，而是使用 Proxy 。
+
+2. 除了 Proxy 本身效率比 Object.defineProperty 更高之外，由于不必递归遍历所有属性，而是直接得到一个 Proxy。所以在 vue3 中，对数据的访问是动态的，当访问某个属性的时候，再动态的获取和设置，这就极大的提升了在组件初始阶段的效率。
+
+3. 同时，由于 Proxy 可以监控到成员的新增和删除，因此，在 vue3 中新增成员、删除成员、索引访问等均可以触发重新渲染，而这些在 vue2 中是难以做到的。
+
+### 双向数据绑定
+
+`vue2`比较让人诟病的一点就是提供了两种双向绑定：`v-model`和`.sync`，在`vue3`中，去掉了`.sync`修饰符，只需要使用`v-model`进行双向绑定即可。
+
+为了让`v-model`更好的针对多个属性进行双向绑定，`vue3`作出了以下修改
+
+- 当对自定义组件使用`v-model`指令时，绑定的属性名由原来的`value`变为`modelValue`，事件名由原来的`input`变为`update:modelValue`
+
+  ```html
+  <!-- vue2 -->
+  <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
+  <!-- 简写为 -->
+  <ChildComponent v-model="pageTitle" />
+
+  <!-- vue3 -->
+  <ChildComponent
+    :modelValue="pageTitle"
+    @update:modelValue="pageTitle = $event"
+  />
+  <!-- 简写为 -->
+  <ChildComponent v-model="pageTitle" />
+  ```
+
+- 去掉了`.sync`修饰符，它原本的功能由`v-model`的参数替代
+
+  ```html
+  <!-- vue2 -->
+  <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
+  <!-- 简写为 -->
+  <ChildComponent :title.sync="pageTitle" />
+
+  <!-- vue3 -->
+  <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
+  <!-- 简写为 -->
+  <ChildComponent v-model:title="pageTitle" />
+  ```
+
+- `model`配置被移除
+
+- 允许自定义`v-model`修饰符
+
+  vue2 无此功能
+
+  ![v-model](./imgs/v-model.png)
+
+### v-if v-for
+
+`v-if` 的优先级 现在高于 `v-for`
+
+### key
+
+- 当使用`<template>`进行`v-for`循环时，需要把`key`值放到`<template>`中，而不是它的子元素中
+
+- 当使用`v-if v-else-if v-else`分支的时候，不再需要指定`key`值，因为`vue3`会自动给予每个分支一个唯一的`key`
+
+  即便要手工给予`key`值，也必须给予每个分支唯一的`key`，**不能因为要重用分支而给予相同的 key**
+
+### Fragment
+
+`vue3`现在允许组件出现多个根节点
+
+### 异步组件
+
+- vue2 `import(/* webpackChunkName: "about" */ '../views/About.vue')`
+- vue3 
+  ```js
+    // h 提升为一个普遍的方法！！
+    import { defineAsyncCompontent, h } from 'vue'
+    const Block1 = defineAsyncCompontent(() => import('xxx')) // () => import('xxx') 返回一个 promise 即可
+
+    const Block2 = defineAsyncCompontent({
+      // loader: () => import('xxx')
+      loader: async () => {
+        await delay(); // delay 为一个延时函数
+        if (Math.random() < 0.5) {
+          throw new Error('组件加载出错了！');
+        }
+        return import('xxx');
+      },
+      loadingCompontent: loading, // 加载状态显示这里的组件，promise 为 pending 状态时！！
+      errorComponent: { // 组件以对象的形式出现！
+        render() {
+          return h(Error, "出错了")
+        }
+      }
+    })
+  ```
+
+### 异步页面
+
+- 页面也是一个组件！！！类似异步组件
+- nprogress 进度条
+
+- Suspence 组件正式版了吗？
+
+### 内置组件 Teleport
+
+- 属性 `<Teleport to="body" />` 改变元素真实的位置
+  
+## composition api 
 
 1. setup 方法会在**所有**生命周期钩子函数**之前**自动执行！
   - this 指向 undefined !
@@ -24,6 +193,7 @@
   - 数据改变了，但是响应式没有生效。 -> ref 封装到一个对象中，value(...访问器)
   - setup 里面，`const count = ref(0)` 是一个对象，实例中是 count.value !
   - props 属性外，其余都不怎么需要了？ 
+  - 参数 props ctx - `ctx.emit`
 
 2. ref 响应式
 3. watchEffect 监控副作用
@@ -61,13 +231,12 @@ vite 原理图
 - 在热更新（HMR）方面，当改动了一个模块后，仅需让浏览器重新请求该模块即可，不像webpack那样需要把该模块的相关依赖模块全部编译一次，效率更高。
 - 当需要打包到生产环境时，vite使用传统的rollup进行打包，因此，vite的主要优势在开发阶段。另外，由于vite利用的是ES Module，因此在代码中不可以使用CommonJS
 
-### 预编译(DLL)
+### 总结
 
-### 支持 es module ，出现大量请求！
-
-### vite 自带 rollup 上生产环境
-
-### 配置开发阶段代理
+1. 预编译(DLL)
+2. 支持 es module ，出现大量请求！
+3. vite 自带 rollup 上生产环境
+4. 配置开发阶段代理
 
 ## 性能提升
 
@@ -198,69 +367,282 @@ vue2在对比每一个节点时，并不知道这个节点哪些相关信息会�
 
 全局的指令、混合、插件、组件等等，都会受到影响。
 
-### 去掉了 Vue 构造函数
+## reactivity api
 
-在过去，如果遇到一个页面有多个`vue`应用时，往往会遇到一些问题
+> reactivity api: https://v3.vuejs.org/api/reactivity-api
 
-```html
-<!-- vue2 -->
-<div id="app1"></div>
-<div id="app2"></div>
-<script>
-  Vue.use(...); // 此代码会影响所有的vue应用
-  Vue.mixin(...); // 此代码会影响所有的vue应用
-  Vue.component(...); // 此代码会影响所有的vue应用
+### 获取响应式数据
 
-	new Vue({
-    // 配置
-  }).$mount("#app1")
+| API        | 传入                      | 返回             | 备注                                                         |
+| :--------- | ------------------------- | ---------------- | ------------------------------------------------------------ |
+| `reactive` | `plain-object`            | `对象代理`       | 深度代理对象中的所有成员                                     |
+| `readonly` | `plain-object` or `proxy` | `对象代理`       | 只能读取代理对象中的成员，不可修改                           |
+| `ref`      | `any`                     | `{ value: ... }` | 对value的访问是响应式的<br />如果给value的值是一个对象，<br />则会通过`reactive`函数进行代理<br />如果已经是代理，则直接使用代理 |
+| `computed` | `function`                | `{ value: ... }` | 当读取value值时，<br />会**根据情况**决定是否要运行函数      |
 
-  new Vue({
-    // 配置
-  }).$mount("#app2")
-</script>
+应用：
+
+- 如果想要让一个对象变为响应式数据，可以使用`reactive`或`ref`
+- 如果想要让一个对象的所有属性只读，使用`readonly`
+- 如果想要让一个非对象数据变为响应式数据，使用`ref`
+- 如果想要根据已知的响应式数据得到一个新的响应式数据，使用`computed`
+
+笔试题1：下面的代码输出结果是什么？
+
+```js
+import { reactive, readonly, ref, computed } from "vue";
+
+const state = reactive({
+  firstName: "Xu Ming",
+  lastName: "Deng",
+});
+const fullName = computed(() => {
+  console.log("changed");
+  return `${state.lastName}, ${state.firstName}`;
+});
+console.log("state ready");
+console.log("fullname is", fullName.value);
+console.log("fullname is", fullName.value);
+const imState = readonly(state);
+console.log(imState === state);
+
+const stateRef = ref(state);
+console.log(stateRef.value === state);
+
+state.firstName = "Cheng";
+state.lastName = "Ji";
+
+console.log(imState.firstName, imState.lastName);
+console.log("fullname is", fullName.value);
+console.log("fullname is", fullName.value);
+
+const imState2 = readonly(stateRef);
+console.log(imState2.value === stateRef.value);
+
 ```
 
-在`vue3`中，去掉了`Vue`构造函数，转而使用`createApp`创建`vue`应用
+笔试题2：按照下面的要求完成函数
 
-```html
-<!-- vue3 -->
-<div id="app1"></div>
-<div id="app2"></div>
-<script>
-	createApp(根组件).use(...).mixin(...).component(...).mount("#app1")
-  createApp(根组件).mount("#app2")
-</script>
+```js
+function useUser(){
+  // 在这里补全函数
+  return {
+    user, // 这是一个只读的用户对象，响应式数据，默认为一个空对象
+    setUserName, // 这是一个函数，传入用户姓名，用于修改用户的名称
+    setUserAge, // 这是一个函数，传入用户年龄，用户修改用户的年龄
+  }
+}
 ```
 
-> 更多vue应用的api：https://v3.vuejs.org/api/application-api.html
+笔试题3：按照下面的要求完成函数
 
-### 组件实例中的API
+```js
+function useDebounce(obj, duration){
+  // 在这里补全函数
+  return {
+    value, // 这里是一个只读对象，响应式数据，默认值为参数值
+    setValue // 这里是一个函数，传入一个新的对象，需要把新对象中的属性混合到原始对象中，混合操作需要在duration的时间中防抖
+  }
+}
+```
 
-在`vue3`中，组件实例是一个`Proxy`，它仅提供了下列成员，功能和`vue2`一样
+### 监听数据变化
 
-属性：https://v3.vuejs.org/api/instance-properties.html
+**watchEffect**
 
-方法：https://v3.vuejs.org/api/instance-methods.html
+```js
+const stop = watchEffect(() => {
+  // 该函数会立即执行，然后追中函数中用到的响应式数据，响应式数据变化后会再次执行
+})
 
-### 对比数据响应式
+// 通过调用stop函数，会停止监听
+stop(); // 停止监听
+```
 
-vue2和vue3均在相同的生命周期完成数据响应式，但做法不一样
+**watch**
 
-![vue2-vue3](./imgs/vue2-vue3.png)
+```js
+// 等效于vue2的$watch
 
-#### 面试题参考答案
+// 监听单个数据的变化
+const state = reactive({ count: 0 })
+watch(() => state.count, (newValue, oldValue) => {
+  // ...
+}, options)
 
-面试题1：为什么vue3中去掉了vue构造函数？
+const countRef = ref(0);
+watch(countRef, (newValue, oldValue) => {
+  // ...
+}, options)
 
-vue2的全局构造函数带来了诸多问题：
+// 监听多个数据的变化
+watch([() => state.count, countRef], ([new1, new2], [old1, old2]) => {
+  // ...
+});
+```
 
-1. 调用构造函数的静态方法会对所有vue应用生效，不利于隔离不同应用
-2. vue2的构造函数集成了太多功能，不利于tree shaking，vue3把这些功能使用普通函数导出，能够充分利用tree shaking优化打包体积
-3. vue2没有把组件实例和vue应用两个概念区分开，在vue2中，通过new Vue创建的对象，既是一个vue应用，同时又是一个特殊的vue组件。vue3中，把两个概念区别开来，通过createApp创建的对象，是一个vue应用，它内部提供的方法是针对整个应用的，而不再是一个特殊的组件。
+**注意：无论是`watchEffect`还是`watch`，当依赖项变化时，回调函数的运行都是异步的（微队列）**
 
-面试题2：谈谈你对vue3数据响应式的理解
+应用：除非遇到下面的场景，否则均建议选择`watchEffect`
 
-vue3 不再使用 Object.defineProperty 的方式定义完成数据响应式，而是使用 Proxy 。
-除了 Proxy 本身效率比 Object.defineProperty 更高之外，由于不必递归遍历所有属性，而是直接得到一个 Proxy。所以在 vue3 中，对数据的访问是动态的，当访问某个属性的时候，再动态的获取和设置，这就极大的提升了在组件初始阶段的效率。
-同时，由于 Proxy 可以监控到成员的新增和删除，因此，在 vue3 中新增成员、删除成员、索引访问等均可以触发重新渲染，而这些在 vue2 中是难以做到的。
+- 不希望回调函数一开始就执行
+- 数据改变时，需要参考旧值
+- 需要监控一些回调函数中不会用到的数据
+
+笔试题: 下面的代码输出结果是什么？
+
+```js
+import { reactive, watchEffect, watch } from "vue";
+const state = reactive({
+  count: 0,
+});
+watchEffect(() => {
+  console.log("watchEffect", state.count);
+});
+watch(
+  () => state.count,
+  (count, oldCount) => {
+    console.log("watch", count, oldCount);
+  }
+);
+console.log("start");
+setTimeout(() => {
+  console.log("time out");
+  state.count++;
+  state.count++;
+});
+state.count++;
+state.count++;
+
+console.log("end");
+
+```
+
+### 判断
+
+| API          | 含义                                                         |
+| ------------ | ------------------------------------------------------------ |
+| `isProxy`    | 判断某个数据是否是由`reactive`或`readonly`                   |
+| `isReactive` | 判断某个数据是否是通过`reactive`创建的<br />详细:https://v3.vuejs.org/api/basic-reactivity.html#isreactive |
+| `isReadonly` | 判断某个数据是否是通过`readonly`创建的                       |
+| `isRef`      | 判断某个数据是否是一个`ref`对象                              |
+
+### 转换
+
+**unref**
+
+等同于：`isRef(val) ? val.value : val`
+
+应用：
+
+```js
+function useNewTodo(todos){
+  todos = unref(todos);
+  // ...
+}
+```
+
+**toRef**
+
+得到一个响应式对象某个属性的ref格式
+
+```js
+const state = reactive({
+  foo: 1,
+  bar: 2
+})
+
+const fooRef = toRef(state, 'foo'); // fooRef: {value: ...}
+
+fooRef.value++
+console.log(state.foo) // 2
+
+state.foo++
+console.log(fooRef.value) // 3
+```
+
+**toRefs**
+
+把一个响应式对象的所有属性转换为ref格式，然后包装到一个`plain-object`中返回
+
+```js
+const state = reactive({
+  foo: 1,
+  bar: 2
+})
+
+const stateAsRefs = toRefs(state)
+/*
+stateAsRefs: not a proxy
+{
+  foo: { value: ... },
+  bar: { value: ... }
+}
+*/
+```
+
+应用：
+
+```js
+setup(){
+  const state1 = reactive({a:1, b:2});
+  const state2 = reactive({c:3, d:4});
+  return {
+    ...state1, // lost reactivity
+    ...state2 // lost reactivity
+  }
+}
+
+setup(){
+  const state1 = reactive({a:1, b:2});
+  const state2 = reactive({c:3, d:4});
+  return {
+    ...toRefs(state1), // reactivity
+    ...toRefs(state2) // reactivity
+  }
+}
+// composition function
+function usePos(){
+  const pos = reactive({x:0, y:0});
+  return pos;
+}
+
+setup(){
+  const {x, y} = usePos(); // lost reactivity
+  const {x, y} = toRefs(usePos()); // reactivity
+}
+```
+
+### 降低心智负担
+
+所有的`composition function`均以`ref`的结果返回，以保证`setup`函数的返回结果中不包含`reactive`或`readonly`直接产生的数据
+
+```js
+function usePos(){
+  const pos = reactive({ x:0, y:0 });
+  return toRefs(pos); //  {x: refObj, y: refObj}
+}
+function useBooks(){
+  const books = ref([]);
+  return {
+    books // books is refObj
+  }
+}
+function useLoginUser(){
+  const user = readonly({
+    isLogin: false,
+    loginId: null
+  });
+  return toRefs(user); // { isLogin: refObj, loginId: refObj }  all ref is readonly
+}
+
+setup(){
+  // 在setup函数中，尽量保证解构、展开出来的所有响应式数据均是ref
+  return {
+    ...usePos(),
+    ...useBooks(),
+    ...useLoginUser()
+  }
+}
+```
+
