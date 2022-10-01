@@ -16,16 +16,20 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "Es6",
-        "link": "/frontend/es6/"
+        "text": "ES6",
+        "link": "/frontend/ES6/"
       },
       {
         "text": "H5 C3",
         "link": "/frontend/h5c3/"
       },
       {
-        "text": "Js",
-        "link": "/frontend/js/"
+        "text": "HTML&CSS",
+        "link": "/frontend/HTML&CSS/"
+      },
+      {
+        "text": "JavaScript",
+        "link": "/frontend/JavaScript/"
       },
       {
         "text": "Min Programs",
@@ -44,12 +48,12 @@ module.exports = [
         "link": "/frontend/react/"
       },
       {
-        "text": "Ts",
-        "link": "/frontend/ts/"
+        "text": "TypeScript",
+        "link": "/frontend/TypeScript/"
       },
       {
-        "text": "Vue",
-        "link": "/frontend/vue/"
+        "text": "VUE",
+        "link": "/frontend/VUE/"
       },
       {
         "text": "Webpack",
