@@ -138,3 +138,43 @@ box-sizing 除了默认的 content-box 外，有一个常用的属性 border-box
 所以，a 标签的颜色是在第一步声明值的时候，发现 color 是仅仅在浏览器的默认样式就确认了，所有设置无效。
 
 解决的办法是：`a {color: inherit}`，这样在 div 里设置，它就会使用继承值了，可以有效简化代码。
+
+## 伪类选择器
+
+LOVE HATE LVHA
+
+```css
+/* 未访问的链接 */
+a:link {
+  color: #FF0000;
+}
+
+/* 已访问的链接 */
+a:visited {
+  color: #00FF00;
+}
+
+/* 鼠标悬停链接 */
+a:hover {
+  color: #FF00FF;
+}
+
+/* 已选择的链接 */
+a:active {
+  color: #0000FF;
+}
+
+/* 第一个子元素,且为 a 元素 */
+a:first-child {}
+/* 最后一个子元素,且为 a 元素 */
+a:last-child {}
+/* 第 n 个元素,且为 a 元素 */
+a:nth-child(n) {}
+/* 第 n 个 type 为 a 的元素 */
+a:nth-of-type(n) {}
+```
+
+## 富文本
+
+div 身上添加 contentEditable 属性即可实现编辑功能，且它比 textarea 更强大，可以添加图片、视频等，所以可以实现富文本。
+
