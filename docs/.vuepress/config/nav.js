@@ -16,19 +16,19 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "ES6",
+        "text": "E S 6",
         "link": "/frontend/ES6/"
-      },
-      {
-        "text": "H5 C3",
-        "link": "/frontend/h5c3/"
       },
       {
         "text": "HTML&CSS",
         "link": "/frontend/HTML&CSS/"
       },
       {
-        "text": "JavaScript",
+        "text": "HTML5&CSS3",
+        "link": "/frontend/HTML5&CSS3/"
+      },
+      {
+        "text": "Java Script",
         "link": "/frontend/JavaScript/"
       },
       {
@@ -48,7 +48,7 @@ module.exports = [
         "link": "/frontend/react/"
       },
       {
-        "text": "TypeScript",
+        "text": "Type Script",
         "link": "/frontend/TypeScript/"
       },
       {

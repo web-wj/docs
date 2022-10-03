@@ -1,6 +1,6 @@
-# h5c3
+# HTML5 & CSS3
 
-## h5
+## HTML5
 
 ### 新增的属性
 
@@ -29,3 +29,11 @@
 - FileReader（文件读取，预览）
 - WebWorker（文件的异步，提升性能，提升交互体验）
 - Fetch（传说中要替代Ajax的东西，兼容性不是很好）
+
+## CSS3
+
+### border-radius
+
+- https://duyiedu.yuque.com/docs/share/f6e028f2-bc0f-40f0-88a4-eec9ea660f62
+
+- https://9elements.github.io/fancy-border-radius/#100.0.0.100--.

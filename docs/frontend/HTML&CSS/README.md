@@ -178,3 +178,15 @@ a:nth-of-type(n) {}
 
 div 身上添加 contentEditable 属性即可实现编辑功能，且它比 textarea 更强大，可以添加图片、视频等，所以可以实现富文本。
 
+## 文字代表图片
+
+网速不好的时候，由于浏览器采用的默认加载机制，会不加载 CSS 以及 JS 文件，所以要是背景图片展示的话，会出现空白。需要文字来代替。
+
+```html
+<a href="www.taobao.com">淘宝网</a>
+```
+
+在 CSS 里面想办法把淘宝网三个文字隐藏掉。
+
+1. 由于 padding 会被背景颜色、图片等填充，所以将 `height: 0` 让图片全在 padding 中，然后 `overflow: hidden` 。
+2. `text-indent` 首行缩进容器宽度，不要让文字换行`white-space: no-wrap;`, 然后 `overflow: hidden` 。
