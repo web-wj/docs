@@ -3,7 +3,7 @@ module.exports = [
     "text": "backend",
     "items": [
       {
-        "text": "Node Js",
+        "text": "NodeJs",
         "link": "/backend/NodeJs/"
       },
       {
@@ -16,11 +16,7 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "Bootstrap",
-        "link": "/frontend/Bootstrap/"
-      },
-      {
-        "text": "E S 6",
+        "text": "ES6",
         "link": "/frontend/ES6/"
       },
       {
@@ -32,11 +28,11 @@ module.exports = [
         "link": "/frontend/HTML5&CSS3/"
       },
       {
-        "text": "Java Script",
+        "text": "JavaScript",
         "link": "/frontend/JavaScript/"
       },
       {
-        "text": "Min Programs",
+        "text": "MinPrograms",
         "link": "/frontend/minPrograms/"
       },
       {
@@ -52,7 +48,7 @@ module.exports = [
         "link": "/frontend/react/"
       },
       {
-        "text": "Type Script",
+        "text": "TypeScript",
         "link": "/frontend/TypeScript/"
       },
       {
