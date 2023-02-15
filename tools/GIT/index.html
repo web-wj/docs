@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git | 分布式版本控制系统 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/docs/favicon.ico">
+    <link rel="manifest" href="/docs/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="前端工程师 Alex 的学习笔记">
+    <meta name="author" content="Alex Wang">
+    <meta name="keywords" content="vuepress , 前端, 学习笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.d2cb8686.css" as="style"><link rel="preload" href="/docs/assets/js/app.84b26931.js" as="script"><link rel="preload" href="/docs/assets/js/2.ce1bac44.js" as="script"><link rel="preload" href="/docs/assets/js/12.16498b95.js" as="script"><link rel="preload" href="/docs/assets/js/7.f3e6aa45.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.9e342d30.js"><link rel="prefetch" href="/docs/assets/js/11.f40a53da.js"><link rel="prefetch" href="/docs/assets/js/13.b3f6806f.js"><link rel="prefetch" href="/docs/assets/js/14.cdfce6cd.js"><link rel="prefetch" href="/docs/assets/js/15.56907925.js"><link rel="prefetch" href="/docs/assets/js/16.4ddad054.js"><link rel="prefetch" href="/docs/assets/js/17.3540b6fb.js"><link rel="prefetch" href="/docs/assets/js/18.79300792.js"><link rel="prefetch" href="/docs/assets/js/19.03ad5bb0.js"><link rel="prefetch" href="/docs/assets/js/20.ded21212.js"><link rel="prefetch" href="/docs/assets/js/21.e657d943.js"><link rel="prefetch" href="/docs/assets/js/22.a7839767.js"><link rel="prefetch" href="/docs/assets/js/23.a8f18f0b.js"><link rel="prefetch" href="/docs/assets/js/24.c9254768.js"><link rel="prefetch" href="/docs/assets/js/25.d08eb9b8.js"><link rel="prefetch" href="/docs/assets/js/26.16666ea5.js"><link rel="prefetch" href="/docs/assets/js/27.5acfebc6.js"><link rel="prefetch" href="/docs/assets/js/28.ebe9596b.js"><link rel="prefetch" href="/docs/assets/js/29.47fa60b8.js"><link rel="prefetch" href="/docs/assets/js/3.de591152.js"><link rel="prefetch" href="/docs/assets/js/30.3d29431d.js"><link rel="prefetch" href="/docs/assets/js/31.1eabdbb0.js"><link rel="prefetch" href="/docs/assets/js/32.9005245e.js"><link rel="prefetch" href="/docs/assets/js/33.b62a5685.js"><link rel="prefetch" href="/docs/assets/js/34.8c2c84ea.js"><link rel="prefetch" href="/docs/assets/js/35.9336b5cb.js"><link rel="prefetch" href="/docs/assets/js/36.97a3cc76.js"><link rel="prefetch" href="/docs/assets/js/37.66398741.js"><link rel="prefetch" href="/docs/assets/js/38.9d8de1d8.js"><link rel="prefetch" href="/docs/assets/js/39.8f67c036.js"><link rel="prefetch" href="/docs/assets/js/4.f5f9c22c.js"><link rel="prefetch" href="/docs/assets/js/40.e98a9424.js"><link rel="prefetch" href="/docs/assets/js/41.226b689f.js"><link rel="prefetch" href="/docs/assets/js/42.6d8e3c92.js"><link rel="prefetch" href="/docs/assets/js/43.b09bfbcd.js"><link rel="prefetch" href="/docs/assets/js/44.110861cb.js"><link rel="prefetch" href="/docs/assets/js/45.1361df68.js"><link rel="prefetch" href="/docs/assets/js/46.0825a84a.js"><link rel="prefetch" href="/docs/assets/js/47.7eed1a37.js"><link rel="prefetch" href="/docs/assets/js/48.314fd5a1.js"><link rel="prefetch" href="/docs/assets/js/49.09c0dc2c.js"><link rel="prefetch" href="/docs/assets/js/5.bc5eb3ee.js"><link rel="prefetch" href="/docs/assets/js/50.14490fbe.js"><link rel="prefetch" href="/docs/assets/js/51.10b8fc7a.js"><link rel="prefetch" href="/docs/assets/js/52.a3add2d1.js"><link rel="prefetch" href="/docs/assets/js/53.c4ce192c.js"><link rel="prefetch" href="/docs/assets/js/54.5cd22bdd.js"><link rel="prefetch" href="/docs/assets/js/55.9fe70fbb.js"><link rel="prefetch" href="/docs/assets/js/56.829f69ec.js"><link rel="prefetch" href="/docs/assets/js/57.97f358a1.js"><link rel="prefetch" href="/docs/assets/js/58.11cbfa72.js"><link rel="prefetch" href="/docs/assets/js/59.8200c4ed.js"><link rel="prefetch" href="/docs/assets/js/6.232177ed.js"><link rel="prefetch" href="/docs/assets/js/60.db894496.js"><link rel="prefetch" href="/docs/assets/js/61.d80fbdff.js"><link rel="prefetch" href="/docs/assets/js/62.2a66782f.js"><link rel="prefetch" href="/docs/assets/js/8.78886e18.js"><link rel="prefetch" href="/docs/assets/js/9.de6828aa.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.d2cb8686.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>GIT</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/tools/GIT/" aria-current="page" class="active sidebar-link">Git | 分布式版本控制系统</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#忽略文件" class="sidebar-link">忽略文件</a></li><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#撤销操作" class="sidebar-link">撤销操作</a></li><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#贮藏" class="sidebar-link">贮藏</a></li><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#删除分支" class="sidebar-link">删除分支</a></li><li class="sidebar-sub-header"><a href="/docs/tools/GIT/#解决冲突" class="sidebar-link">解决冲突</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git-分布式版本控制系统"><a href="#git-分布式版本控制系统" class="header-anchor">#</a> Git | 分布式版本控制系统</h1> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <blockquote><p>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p></blockquote> <p>文档：<a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer">https://git-scm.com/book/en/v2<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="忽略文件"><a href="#忽略文件" class="header-anchor">#</a> 忽略文件</h2> <p>一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件的模式。 来看一个实际的 .gitignore 例子：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">cat</span> .gitignore
+*.<span class="token punctuation">[</span>oa<span class="token punctuation">]</span>
+*~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>第一行告诉 Git 忽略所有以 .o 或 .a 结尾的文件。一般这类对象文件和存档文件都是编译过程中出现的。 第二行告诉 Git 忽略所有名字以波浪符（~）结尾的文件，许多文本编辑软件（比如 Emacs）都用这样的文件名保存副本。 此外，你可能还需要忽略 log，tmp 或者 pid 目录，以及自动生成的文档等等。 要养成一开始就为你的新仓库设置好 .gitignore 文件的习惯，以免将来误提交这类无用的文件。</p> <p>文件 .gitignore 的格式规范如下：</p> <ul><li><p>所有空行或者以 # 开头的行都会被 Git 忽略。</p></li> <li><p>可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。</p></li> <li><p>匹配模式可以以（/）开头防止递归。</p></li> <li><p>匹配模式可以以（/）结尾指定目录。</p></li> <li><p>要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。</p></li></ul> <p>所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符；[abc] 匹配任何一个列在方括号中的字符 （这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）； 问号（?）只匹配一个任意字符；如果在方括号中使用短划线分隔两个字符， 表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。 使用两个星号（**）表示匹配任意中间目录，比如 a/**/z 可以匹配 a/z 、 a/b/z 或 a/b/c/z 等。</p> <p>我们再看一个 .gitignore 文件的例子：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 忽略所有的 .a 文件</span>
+*.a
+
+<span class="token comment"># 但跟踪所有的 lib.a，即便你在前面忽略了 .a 文件</span>
+<span class="token operator">!</span>lib.a
+
+<span class="token comment"># 只忽略当前目录下的 TODO 文件，而不忽略 subdir/TODO</span>
+/TODO
+
+<span class="token comment"># 忽略任何目录下名为 build 的文件夹</span>
+build/
+
+<span class="token comment"># 忽略 doc/notes.txt，但不忽略 doc/server/arch.txt</span>
+doc/*.txt
+
+<span class="token comment"># 忽略 doc/ 目录及其所有子目录下的 .pdf 文件</span>
+doc/**/*.pdf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><blockquote><p>Tip: GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore 文件列表， 你可以在 <a href="https://github.com/github/gitignore" target="_blank" rel="noopener noreferrer">https://github.com/github/gitignore<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 找到它。</p></blockquote> <h2 id="撤销操作"><a href="#撤销操作" class="header-anchor">#</a> 撤销操作</h2> <ol><li>用新提交抵消之前的操作。—— 产生新提交。</li></ol> <ul><li><p>一种常见的场景是，提交代码以后，你突然意识到这个提交有问题，应该撤销掉，这时执行<code>git revert HEAD</code>命令就可以了。</p></li> <li><p>上面命令的原理是，在当前提交后面，新增一次提交，抵消掉上一次提交导致的所有变化。它不会改变过去的历史，所以是首选方式，没有任何丢失代码的风险。(因为公司内部需要漂亮的 commit 列表所以这种方式不行的。)</p></li> <li><p><code>git revert</code> 命令只能抵消上一个提交，如果想抵消多个提交，必须在命令行依次指定这些提交。比如，抵消前两个提交，要像下面这样写。<code>git revert [倒数第一个提交] [倒数第二个提交]</code></p></li> <li><p>git revert命令还有两个参数。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>--no-edit：执行时不打开默认编辑器，直接使用 Git 自动生成的提交信息。
+--no-commit：只抵消暂存区和工作区的文件变化，不产生新的提交。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li></ul> <ol start="2"><li>丢弃提交</li></ol> <ul><li>如果希望以前的提交在历史中彻底消失，而不是被抵消掉，可以使用git reset命令，丢弃掉某个提交之后的所有提交。(常用！！保证自己的改动只有一个 commit)</li> <li><code>git reset [last good SHA]</code></li> <li>git reset 的原理是，让最新提交的指针回到以前某个时点，该时点之后的提交都从历史中消失。默认情况下，git reset不改变工作区的文件（但会改变暂存区），--hard参数可以让工作区里面的文件也回到以前的状态。</li> <li>执行git reset命令之后，如果想找回那些丢弃掉的提交，可以使用git reflog命令，具体做法参考<a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/#redo-after-undo-local" target="_blank" rel="noopener noreferrer">这里<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。不过，这种做法有时效性，时间长了可能找不回来。</li></ul> <ol start="3"><li>修改上一次提交</li></ol> <ul><li><p><code>git commit --amend</code></p></li> <li><p>这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令）， 那么快照会保持不变，而你所修改的只是提交信息。</p></li> <li><p>修补提交最明显的价值是可以稍微改进你最后的提交，而不会让“啊，忘了添加一个文件”或者 “小修补，修正笔误”这种提交信息弄乱你的仓库历史。</p> <blockquote><p>Tip: 记住，在 Git 中任何 已提交 的东西几乎总是可以恢复的。 甚至那些被删除的分支中的提交或使用 --amend 选项覆盖的提交也可以恢复 （阅读 <a href="https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D#_data_recovery" target="_blank" rel="noopener noreferrer">数据恢复<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 了解数据恢复）。 然而，任何你未提交的东西丢失后很可能再也找不到了。</p></blockquote></li></ul> <ol start="4"><li>撤销工作区文件修改</li></ol> <ul><li>如果工作区的某个文件被改乱了，但还没有提交，可以用<code>git checkout</code>命令找回本次修改之前的文件。</li> <li>它的原理是先找暂存区，如果该文件有暂存的版本，则恢复该版本，否则恢复上一次提交的版本。注意，工作区的文件变化一旦被撤销，就无法找回了。</li></ul> <ol start="5"><li>从暂存区撤销文件</li></ol> <ul><li>如果不小心把一个文件添加到暂存区，可以用下面的命令撤销。<code>git rm --cached [filename]</code>不影响已经提交的内容。</li></ul> <ol start="6"><li>撤销当前分支的变化</li></ol> <ul><li><p>你在当前分支上做了几次提交，突然发现放错了分支，这几个提交本应该放到另一个分支。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 新建一个 feature 分支，指向当前最新的提交
+# 注意，这时依然停留在当前分支
+$ git branch feature
+
+# 切换到这几次提交之前的状态
+$ git reset --hard [当前分支此前的最后一次提交]
+
+# 切换到 feature 分支
+$ git checkout feature
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li> <li><p>上面的操作等于是撤销当前分支的变化，将这些变化放到一个新建的分支。</p></li> <li><p><a href="https://cloud.tencent.com/developer/article/1582800" target="_blank" rel="noopener noreferrer">回滚<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ul> <h2 id="贮藏"><a href="#贮藏" class="header-anchor">#</a> 贮藏</h2> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">git</span> stash list
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>要查看贮藏的东西，可以使用 git stash list。想要应用其中一个更旧的贮藏，可以通过名字指定它，像这样：git stash apply stash@{2}</p> <ul><li>从贮藏创建一个分支</li></ul> <p>如果贮藏了一些工作，将它留在那儿了一会儿，然后继续在贮藏的分支上工作，在重新应用工作时可能会有问题。 如果应用尝试修改刚刚修改的文件，你会得到一个合并冲突并不得不解决它。 如果想要一个轻松的方式来再次测试贮藏的改动，可以运行 <code>git stash branch &lt;new branchname&gt;</code> 以你指定的分支名创建一个新分支，检出贮藏工作时所在的提交，重新在那应用工作，然后在应用成功后丢弃贮藏：</p> <h2 id="删除分支"><a href="#删除分支" class="header-anchor">#</a> 删除分支</h2> <h3 id="删除本地分支"><a href="#删除本地分支" class="header-anchor">#</a> 删除本地分支</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// -d 是一个标志，是命令的一个选项，它是 --delete </span>
+git branch <span class="token operator">-</span>d local_branch_name 
+<span class="token comment">// 列出所有本地分支</span>
+git branch
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>无法删除所在的分支，会报以下的错误：</p> <p><img src="/docs/assets/img/error1.6b23ea87.png" alt=""></p> <p>因此，在删除本地分支之前，请确保使用以下git checkout命令切换到您不想删除的另一个分支。</p> <p>我们刚刚使用的删除本地分支的命令并非在所有情况下都有效。如果分支包含未合并的更改和未推送的提交，则该-d 标志将不允许删除本地分支。这是因为任何其他分支都看不到提交，并且 Git 正在保护您免于意外丢失任何提交数据。如果你尝试这样做，Git 会显示一个错误：</p> <p><img src="/docs/assets/img/error2.808d15cc.png" alt=""></p> <p>正如错误所暗示的那样，您需要改用该 -D 标志：<code>git branch -D local_branch_name</code></p> <p>-D带有大写-- delete --force字母D的标志会强行删除本地分支，无论其合并状态如何。但请注意，您应该谨慎使用此命令，因为没有提示要求您确认您的操作。仅当您绝对确定要删除本地分支时才使用它。如果您没有将其合并到另一个本地分支或将其推送到代码库中的远程分支，您将面临丢失所做的任何更改的风险。</p> <h3 id="修改远程分支"><a href="#修改远程分支" class="header-anchor">#</a> 修改远程分支</h3> <p>远程分支与本地分支是分开的。删除远程分支的命令是：<code>git push remote_name -d remote_branch_name</code></p> <p><code>git branch -a</code>显示所有分支机构 - 本地和远程。我想删除远程 origin/test 分支，所以我使用命令：<code>git push origin -d test</code></p> <h2 id="解决冲突"><a href="#解决冲突" class="header-anchor">#</a> 解决冲突</h2> <p>通常情况下需要 <code>git fetch + git rebase</code> 解决！合并代码后，重新 <code>git add</code> 然后 <code>git rebase --continue</code>相当于 --amend 修改上一次的 commit 。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年8月28日星期日 23:31</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.84b26931.js" defer></script><script src="/docs/assets/js/2.ce1bac44.js" defer></script><script src="/docs/assets/js/12.16498b95.js" defer></script><script src="/docs/assets/js/7.f3e6aa45.js" defer></script>
+  </body>
+</html>

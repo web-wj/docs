@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Node.js | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/docs/favicon.ico">
+    <link rel="manifest" href="/docs/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="前端工程师 Alex 的学习笔记">
+    <meta name="author" content="Alex Wang">
+    <meta name="keywords" content="vuepress , 前端, 学习笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.d2cb8686.css" as="style"><link rel="preload" href="/docs/assets/js/app.84b26931.js" as="script"><link rel="preload" href="/docs/assets/js/2.ce1bac44.js" as="script"><link rel="preload" href="/docs/assets/js/15.56907925.js" as="script"><link rel="preload" href="/docs/assets/js/7.f3e6aa45.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.9e342d30.js"><link rel="prefetch" href="/docs/assets/js/11.f40a53da.js"><link rel="prefetch" href="/docs/assets/js/12.16498b95.js"><link rel="prefetch" href="/docs/assets/js/13.b3f6806f.js"><link rel="prefetch" href="/docs/assets/js/14.cdfce6cd.js"><link rel="prefetch" href="/docs/assets/js/16.4ddad054.js"><link rel="prefetch" href="/docs/assets/js/17.3540b6fb.js"><link rel="prefetch" href="/docs/assets/js/18.79300792.js"><link rel="prefetch" href="/docs/assets/js/19.03ad5bb0.js"><link rel="prefetch" href="/docs/assets/js/20.ded21212.js"><link rel="prefetch" href="/docs/assets/js/21.e657d943.js"><link rel="prefetch" href="/docs/assets/js/22.a7839767.js"><link rel="prefetch" href="/docs/assets/js/23.a8f18f0b.js"><link rel="prefetch" href="/docs/assets/js/24.c9254768.js"><link rel="prefetch" href="/docs/assets/js/25.d08eb9b8.js"><link rel="prefetch" href="/docs/assets/js/26.16666ea5.js"><link rel="prefetch" href="/docs/assets/js/27.5acfebc6.js"><link rel="prefetch" href="/docs/assets/js/28.ebe9596b.js"><link rel="prefetch" href="/docs/assets/js/29.47fa60b8.js"><link rel="prefetch" href="/docs/assets/js/3.de591152.js"><link rel="prefetch" href="/docs/assets/js/30.3d29431d.js"><link rel="prefetch" href="/docs/assets/js/31.1eabdbb0.js"><link rel="prefetch" href="/docs/assets/js/32.9005245e.js"><link rel="prefetch" href="/docs/assets/js/33.b62a5685.js"><link rel="prefetch" href="/docs/assets/js/34.8c2c84ea.js"><link rel="prefetch" href="/docs/assets/js/35.9336b5cb.js"><link rel="prefetch" href="/docs/assets/js/36.97a3cc76.js"><link rel="prefetch" href="/docs/assets/js/37.66398741.js"><link rel="prefetch" href="/docs/assets/js/38.9d8de1d8.js"><link rel="prefetch" href="/docs/assets/js/39.8f67c036.js"><link rel="prefetch" href="/docs/assets/js/4.f5f9c22c.js"><link rel="prefetch" href="/docs/assets/js/40.e98a9424.js"><link rel="prefetch" href="/docs/assets/js/41.226b689f.js"><link rel="prefetch" href="/docs/assets/js/42.6d8e3c92.js"><link rel="prefetch" href="/docs/assets/js/43.b09bfbcd.js"><link rel="prefetch" href="/docs/assets/js/44.110861cb.js"><link rel="prefetch" href="/docs/assets/js/45.1361df68.js"><link rel="prefetch" href="/docs/assets/js/46.0825a84a.js"><link rel="prefetch" href="/docs/assets/js/47.7eed1a37.js"><link rel="prefetch" href="/docs/assets/js/48.314fd5a1.js"><link rel="prefetch" href="/docs/assets/js/49.09c0dc2c.js"><link rel="prefetch" href="/docs/assets/js/5.bc5eb3ee.js"><link rel="prefetch" href="/docs/assets/js/50.14490fbe.js"><link rel="prefetch" href="/docs/assets/js/51.10b8fc7a.js"><link rel="prefetch" href="/docs/assets/js/52.a3add2d1.js"><link rel="prefetch" href="/docs/assets/js/53.c4ce192c.js"><link rel="prefetch" href="/docs/assets/js/54.5cd22bdd.js"><link rel="prefetch" href="/docs/assets/js/55.9fe70fbb.js"><link rel="prefetch" href="/docs/assets/js/56.829f69ec.js"><link rel="prefetch" href="/docs/assets/js/57.97f358a1.js"><link rel="prefetch" href="/docs/assets/js/58.11cbfa72.js"><link rel="prefetch" href="/docs/assets/js/59.8200c4ed.js"><link rel="prefetch" href="/docs/assets/js/6.232177ed.js"><link rel="prefetch" href="/docs/assets/js/60.db894496.js"><link rel="prefetch" href="/docs/assets/js/61.d80fbdff.js"><link rel="prefetch" href="/docs/assets/js/62.2a66782f.js"><link rel="prefetch" href="/docs/assets/js/8.78886e18.js"><link rel="prefetch" href="/docs/assets/js/9.de6828aa.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.d2cb8686.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Node Js</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/backend/NodeJs/" aria-current="page" class="active sidebar-link">Node.js</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#buffer-缓存区" class="sidebar-link">Buffer 缓存区</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#fs-文件系统模块" class="sidebar-link">fs 文件系统模块</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#path-路径模块" class="sidebar-link">path 路径模块</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#http-模块" class="sidebar-link">http 模块</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#模块化" class="sidebar-link">模块化</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/#commonjs-模块化规范" class="sidebar-link">CommonJS 模块化规范</a></li></ul></li><li><a href="/docs/backend/NodeJs/express.html" class="sidebar-link">express 中间件</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="node-js"><a href="#node-js" class="header-anchor">#</a> Node.js</h1> <blockquote><p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.</p></blockquote> <p>文档：<a href="https://nodejs.org/en/" target="_blank" rel="noopener noreferrer">https://nodejs.org/en/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="buffer-缓存区"><a href="#buffer-缓存区" class="header-anchor">#</a> Buffer 缓存区</h2> <ul><li>Buffer 的结构与数组类似，操作方法也与数组类似</li> <li>数组不能存储二进制文件，Buffer 是专门存储二进制数据的</li> <li>Buffer 存储的是二进制数据，显示时以 16 进制的形式显示</li> <li>Buffer 每一个元素范围是 00~ff，即 0~255、00000000~11111111</li> <li>每一个元素占用一个字节内存</li> <li>Buffer 是对底层内存的直接操作，因此大小一旦确定就不能修改</li></ul> <p>Buffer 常用方法：</p> <ul><li>Buffer.from(str[, encoding])：将一个字符串转换为 Buffer</li> <li>Buffer.alloc(size)：创建指定大小的 Buffer</li> <li>Buffer.alloUnsafe(size)：创建指定大小的 Buffer，可能包含敏感数据（分配内存时不会清除内存残留的数据）</li> <li>buf.toString()：将 Buffer 数据转为字符串</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'Hello前端'</span>
+
+<span class="token keyword">var</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+
+<span class="token comment">// 占用内存的大小，一个汉字3字节 13</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+<span class="token comment">// 字符串的长度 7</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+<span class="token comment">// 8进制输出第一个元素 145</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">//创建一个10个字节的buffer</span>
+<span class="token keyword">var</span> buf2 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token comment">//通过索引，来操作buf中的元素</span>
+buf2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">88</span>
+buf2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">255</span>
+buf2<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0xaa</span>
+buf2<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">255</span>
+
+<span class="token keyword">var</span> buf3 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocUnsafe</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf3<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h2 id="fs-文件系统模块"><a href="#fs-文件系统模块" class="header-anchor">#</a> fs 文件系统模块</h2> <ul><li>fs 模块中所有的操作都有两种形式可供选择:同步和异步</li> <li>同步文件系统会阻塞程序的执行，也就是除非操作完毕，否则不会向下执行代码</li> <li>异步文件系统不会阻塞程序的执行，而是在操作完成时，通过回调函数将结果返回</li> <li>实际开发很少用同步方式，因此只介绍异步方式</li></ul> <p>打开模式：</p> <table><thead><tr><th>模式</th> <th>说明</th></tr></thead> <tbody><tr><td>r</td> <td>读取文件，文件不存在抛异常</td></tr> <tr><td>r+</td> <td>读写文件，文件不存在抛异常</td></tr> <tr><td>rs</td> <td>同步模式下打开文件用于读取</td></tr> <tr><td>rs+</td> <td>同步模式下打开文件用于读写</td></tr> <tr><td>w</td> <td>写文件，不存在则创建，存在则覆盖原有内容</td></tr> <tr><td>wx</td> <td>写文件，文件存在打开失败</td></tr> <tr><td>w+</td> <td>读写文件，不存在创建，存在截断</td></tr> <tr><td>wx+</td> <td>读写，存在打开失败</td></tr> <tr><td>a</td> <td>追加，不存在创建</td></tr> <tr><td>ax</td> <td>追加，存在失败</td></tr> <tr><td>a+</td> <td>追加和读取，不存在创建</td></tr> <tr><td>ax+</td> <td>追加和读取，存在失败</td></tr></tbody></table> <h3 id="读取文件"><a href="#读取文件" class="header-anchor">#</a> 读取文件</h3> <h3 id="路径动态拼接问题-dirname"><a href="#路径动态拼接问题-dirname" class="header-anchor">#</a> 路径动态拼接问题 __dirname</h3> <ul><li>在使用 fs 模块操作文件时，如果提供的操作路径是以 ./ 或 ../ 开头的相对路径时，容易出现路径动态拼接错误的问题</li> <li>原因：代码在运行的时候，会以执行 node 命令时所处的目录，动态拼接出被操作文件的完整路径</li> <li>解决方案：在使用 fs 模块操作文件时，直接提供完整的路径，从而防止路径动态拼接的问题</li> <li>__dirname 获取文件所处的绝对路径</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/files/1.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="其它操作"><a href="#其它操作" class="header-anchor">#</a> 其它操作</h3> <p>验证路径是否存在：</p> <ul><li>fs.exists(path, callback)</li> <li>fs.existsSync(path)</li></ul> <p>获取文件信息：</p> <ul><li>fs.stat(path, callback)</li> <li>fs.stat(path)</li></ul> <p>删除文件：</p> <ul><li>fs.unlink(path, callback)</li> <li>fs.unlinkSync(path)</li></ul> <p>列出文件：</p> <ul><li>fs.readdir(path[,options], callback)</li> <li>fs.readdirSync(path[, options])</li></ul> <p>截断文件：</p> <ul><li>fs.truncate(path, len, callback)</li> <li>fs.truncateSync(path, len)</li></ul> <p>建立目录：</p> <ul><li>fs.mkdir(path[, mode], callback)</li> <li>fs.mkdirSync(path[, mode])</li></ul> <p>删除目录：</p> <ul><li>fs.rmdir(path, callback)</li> <li>fs.rmdirSync(path)</li></ul> <p>重命名文件和目录：</p> <ul><li>fs.rename(oldPath, newPath, callback)</li> <li>fs.renameSync(oldPath, newPath)</li></ul> <p>监视文件更改：</p> <ul><li>fs.watchFile(filename[, options], listener)</li></ul> <h2 id="path-路径模块"><a href="#path-路径模块" class="header-anchor">#</a> path 路径模块</h2> <p>path 模块是 Node.js 官方提供的、用来处理路径的模块。它提供了一系列的方法和属性，用来满足用户对路径的处理需求。</p> <h3 id="路径拼接-path-join"><a href="#路径拼接-path-join" class="header-anchor">#</a> 路径拼接 path.join()</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 注意 ../ 会抵消前面的路径</span>
+<span class="token comment">// ./ 会被忽略</span>
+<span class="token keyword">const</span> pathStr <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'/a'</span><span class="token punctuation">,</span> <span class="token string">'/b/c'</span><span class="token punctuation">,</span> <span class="token string">'../../'</span><span class="token punctuation">,</span> <span class="token string">'./d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pathStr<span class="token punctuation">)</span> <span class="token comment">// \a\d\e</span>
+
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./files/1.txt'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> dataStr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>dataStr<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="获取路径中文件名-path-basename"><a href="#获取路径中文件名-path-basename" class="header-anchor">#</a> 获取路径中文件名 path.basename()</h3> <p>使用 path.basename() 方法，可以获取路径中的最后一部分，常通过该方法获取路径中的文件名</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span><span class="token punctuation">,</span> ext<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>path: 文件路径</li> <li>ext: 文件扩展名</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 定义文件的存放路径</span>
+<span class="token keyword">const</span> fpath <span class="token operator">=</span> <span class="token string">'/a/b/c/index.html'</span>
+
+<span class="token keyword">const</span> fullName <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>fpath<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fullName<span class="token punctuation">)</span> <span class="token comment">// index.html</span>
+
+<span class="token keyword">const</span> nameWithoutExt <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>fpath<span class="token punctuation">,</span> <span class="token string">'.html'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>nameWithoutExt<span class="token punctuation">)</span> <span class="token comment">// index</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="获取路径中文件扩展名-path-extname"><a href="#获取路径中文件扩展名-path-extname" class="header-anchor">#</a> 获取路径中文件扩展名 path.extname()</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> fpath <span class="token operator">=</span> <span class="token string">'/a/b/c/index.html'</span>
+
+<span class="token keyword">const</span> fext <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">extname</span><span class="token punctuation">(</span>fpath<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fext<span class="token punctuation">)</span> <span class="token comment">// .html</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="http-模块"><a href="#http-模块" class="header-anchor">#</a> http 模块</h2> <p>http 模块是 Node.js 官方提供的、用来创建 web 服务器的模块。</p> <h3 id="创建基本-web-服务器"><a href="#创建基本-web-服务器" class="header-anchor">#</a> 创建基本 Web 服务器</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 创建 web 服务器实例</span>
+<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 为服务器实例绑定 request 事件，监听客户端的请求</span>
+server<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'request'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> url <span class="token operator">=</span> req<span class="token punctuation">.</span>url
+  <span class="token keyword">const</span> method <span class="token operator">=</span> req<span class="token punctuation">.</span>method
+  <span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Your request url is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, and request method is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>method<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+
+  <span class="token comment">// 设置 Content-Type 响应头，解决中文乱码的问题</span>
+  res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html; charset=utf-8'</span><span class="token punctuation">)</span>
+  <span class="token comment">// 向客户端响应内容</span>
+  res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8080</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server running at http://127.0.0.1:8080'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="实现简陋路由效果"><a href="#实现简陋路由效果" class="header-anchor">#</a> 实现简陋路由效果</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+server<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'request'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> url <span class="token operator">=</span> req<span class="token punctuation">.</span>url
+  <span class="token comment">// 设置默认的响应内容为 404 Not found</span>
+  <span class="token keyword">let</span> content <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;404 Not found!&lt;/h1&gt;'</span>
+  <span class="token comment">// 判断用户请求的是否为 / 或 /index.html 首页</span>
+  <span class="token comment">// 判断用户请求的是否为 /about.html 关于页面</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>url <span class="token operator">===</span> <span class="token string">'/'</span> <span class="token operator">||</span> url <span class="token operator">===</span> <span class="token string">'/index.html'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    content <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;首页&lt;/h1&gt;'</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>url <span class="token operator">===</span> <span class="token string">'/about.html'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    content <span class="token operator">=</span> <span class="token string">'&lt;h1&gt;关于页面&lt;/h1&gt;'</span>
+  <span class="token punctuation">}</span>
+
+  res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html; charset=utf-8'</span><span class="token punctuation">)</span>
+  res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server running at http://127.0.0.1'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="模块化"><a href="#模块化" class="header-anchor">#</a> 模块化</h2> <h3 id="模块化概念"><a href="#模块化概念" class="header-anchor">#</a> 模块化概念</h3> <ul><li>模块化是指解决一个复杂问题时，自顶向下逐层把系统划分为若干模块的过程，模块是可组合、分解和更换的单元。</li> <li>模块化可提高代码的复用性和可维护性，实现按需加载。</li> <li>模块化规范是对代码进行模块化拆分和组合时需要遵守的规则，如使用何种语法格式引用模块和向外暴露成员。</li></ul> <h3 id="node-js-中模块的分类"><a href="#node-js-中模块的分类" class="header-anchor">#</a> Node.js 中模块的分类</h3> <ul><li>内置模块</li> <li>自定义模块</li> <li>第三方模块</li></ul> <h3 id="node-js-中的模块作用域"><a href="#node-js-中的模块作用域" class="header-anchor">#</a> Node.js 中的模块作用域</h3> <ul><li>和函数作用域类似，在自定义模块中定义的变量、方法等成员，只能在当前模块内被访问，这种模块级别的访问限制，叫做模块作用域</li> <li>防止全局变量污染</li></ul> <h3 id="模块作用域的成员"><a href="#模块作用域的成员" class="header-anchor">#</a> 模块作用域的成员</h3> <ul><li>自定义模块中都有一个 module 对象，存储了和当前模块有关的信息</li> <li>在自定义模块中，可以使用 module.exports 对象，将模块内的成员共享出去，供外界使用。导入自定义模块时，得到的就是 module.exports 指向的对象。</li> <li>默认情况下，exports 和 module.exports 指向同一个对象。最终共享的结果，以 module.exports 指向的对象为准。</li></ul> <h2 id="commonjs-模块化规范"><a href="#commonjs-模块化规范" class="header-anchor">#</a> CommonJS 模块化规范</h2> <ul><li>每个模块内部，module 变量代表当前模块</li> <li>module 变量是一个对象，module.exports 是对外的接口</li> <li>加载某个模块即加载该模块的 module.exports 属性</li></ul> <h3 id="模块加载机制"><a href="#模块加载机制" class="header-anchor">#</a> 模块加载机制</h3> <p>模块第一次加载后会被缓存，即多次调用 require() 不会导致模块的代码被执行多次，提高模块加载效率。</p> <h3 id="内置模块加载"><a href="#内置模块加载" class="header-anchor">#</a> 内置模块加载</h3> <p>内置模块加载优先级最高。</p> <h3 id="自定义模块加载"><a href="#自定义模块加载" class="header-anchor">#</a> 自定义模块加载</h3> <p>加载自定义模块时，路径要以 ./ 或 ../ 开头，否则会作为内置模块或第三方模块加载。</p> <p>导入自定义模块时，若省略文件扩展名，则 Node.js 会按顺序尝试加载文件：</p> <ul><li>按确切的文件名加载</li> <li>补全 .js 扩展名加载</li> <li>补全 .json 扩展名加载</li> <li>补全 .node 扩展名加载</li> <li>报错</li></ul> <h3 id="第三方模块加载"><a href="#第三方模块加载" class="header-anchor">#</a> 第三方模块加载</h3> <ul><li>若导入第三方模块， Node.js 会从当前模块的父目录开始，尝试从 /node_modules 文件夹中加载第三方模块。</li> <li>如果没有找到对应的第三方模块，则移动到再上一层父目录中，进行加载，直到文件系统的根目录。</li></ul> <p>例如，假设在 C:\Users\bruce\project\foo.js 文件里调用了 require('tools')，则 Node.js 会按以下顺序查找：</p> <ul><li>C:\Users\bruce\project\node_modules\tools</li> <li>C:\Users\bruce\node_modules\tools</li> <li>C:\Users\node_modules\tools</li> <li>C:\node_modules\tools</li></ul> <h3 id="目录作为模块加载"><a href="#目录作为模块加载" class="header-anchor">#</a> 目录作为模块加载</h3> <p>当把目录作为模块标识符进行加载的时候，有三种加载方式：</p> <ul><li>在被加载的目录下查找 package.json 的文件，并寻找 main 属性，作为 require() 加载的入口</li> <li>如果没有 package.json 文件，或者 main 入口不存在或无法解析，则 Node.js 将会试图加载目录下的 index.js 文件。</li> <li>若失败则报错</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年2月19日星期六 17:26</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/docs/backend/NodeJs/express.html">
+        express 中间件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.84b26931.js" defer></script><script src="/docs/assets/js/2.ce1bac44.js" defer></script><script src="/docs/assets/js/15.56907925.js" defer></script><script src="/docs/assets/js/7.f3e6aa45.js" defer></script>
+  </body>
+</html>

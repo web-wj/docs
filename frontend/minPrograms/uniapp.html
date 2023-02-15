@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>uniapp | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/docs/favicon.ico">
+    <link rel="manifest" href="/docs/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="前端工程师 Alex 的学习笔记">
+    <meta name="author" content="Alex Wang">
+    <meta name="keywords" content="vuepress , 前端, 学习笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.d2cb8686.css" as="style"><link rel="preload" href="/docs/assets/js/app.84b26931.js" as="script"><link rel="preload" href="/docs/assets/js/2.ce1bac44.js" as="script"><link rel="preload" href="/docs/assets/js/37.66398741.js" as="script"><link rel="preload" href="/docs/assets/js/7.f3e6aa45.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.9e342d30.js"><link rel="prefetch" href="/docs/assets/js/11.f40a53da.js"><link rel="prefetch" href="/docs/assets/js/12.16498b95.js"><link rel="prefetch" href="/docs/assets/js/13.b3f6806f.js"><link rel="prefetch" href="/docs/assets/js/14.cdfce6cd.js"><link rel="prefetch" href="/docs/assets/js/15.56907925.js"><link rel="prefetch" href="/docs/assets/js/16.4ddad054.js"><link rel="prefetch" href="/docs/assets/js/17.3540b6fb.js"><link rel="prefetch" href="/docs/assets/js/18.79300792.js"><link rel="prefetch" href="/docs/assets/js/19.03ad5bb0.js"><link rel="prefetch" href="/docs/assets/js/20.ded21212.js"><link rel="prefetch" href="/docs/assets/js/21.e657d943.js"><link rel="prefetch" href="/docs/assets/js/22.a7839767.js"><link rel="prefetch" href="/docs/assets/js/23.a8f18f0b.js"><link rel="prefetch" href="/docs/assets/js/24.c9254768.js"><link rel="prefetch" href="/docs/assets/js/25.d08eb9b8.js"><link rel="prefetch" href="/docs/assets/js/26.16666ea5.js"><link rel="prefetch" href="/docs/assets/js/27.5acfebc6.js"><link rel="prefetch" href="/docs/assets/js/28.ebe9596b.js"><link rel="prefetch" href="/docs/assets/js/29.47fa60b8.js"><link rel="prefetch" href="/docs/assets/js/3.de591152.js"><link rel="prefetch" href="/docs/assets/js/30.3d29431d.js"><link rel="prefetch" href="/docs/assets/js/31.1eabdbb0.js"><link rel="prefetch" href="/docs/assets/js/32.9005245e.js"><link rel="prefetch" href="/docs/assets/js/33.b62a5685.js"><link rel="prefetch" href="/docs/assets/js/34.8c2c84ea.js"><link rel="prefetch" href="/docs/assets/js/35.9336b5cb.js"><link rel="prefetch" href="/docs/assets/js/36.97a3cc76.js"><link rel="prefetch" href="/docs/assets/js/38.9d8de1d8.js"><link rel="prefetch" href="/docs/assets/js/39.8f67c036.js"><link rel="prefetch" href="/docs/assets/js/4.f5f9c22c.js"><link rel="prefetch" href="/docs/assets/js/40.e98a9424.js"><link rel="prefetch" href="/docs/assets/js/41.226b689f.js"><link rel="prefetch" href="/docs/assets/js/42.6d8e3c92.js"><link rel="prefetch" href="/docs/assets/js/43.b09bfbcd.js"><link rel="prefetch" href="/docs/assets/js/44.110861cb.js"><link rel="prefetch" href="/docs/assets/js/45.1361df68.js"><link rel="prefetch" href="/docs/assets/js/46.0825a84a.js"><link rel="prefetch" href="/docs/assets/js/47.7eed1a37.js"><link rel="prefetch" href="/docs/assets/js/48.314fd5a1.js"><link rel="prefetch" href="/docs/assets/js/49.09c0dc2c.js"><link rel="prefetch" href="/docs/assets/js/5.bc5eb3ee.js"><link rel="prefetch" href="/docs/assets/js/50.14490fbe.js"><link rel="prefetch" href="/docs/assets/js/51.10b8fc7a.js"><link rel="prefetch" href="/docs/assets/js/52.a3add2d1.js"><link rel="prefetch" href="/docs/assets/js/53.c4ce192c.js"><link rel="prefetch" href="/docs/assets/js/54.5cd22bdd.js"><link rel="prefetch" href="/docs/assets/js/55.9fe70fbb.js"><link rel="prefetch" href="/docs/assets/js/56.829f69ec.js"><link rel="prefetch" href="/docs/assets/js/57.97f358a1.js"><link rel="prefetch" href="/docs/assets/js/58.11cbfa72.js"><link rel="prefetch" href="/docs/assets/js/59.8200c4ed.js"><link rel="prefetch" href="/docs/assets/js/6.232177ed.js"><link rel="prefetch" href="/docs/assets/js/60.db894496.js"><link rel="prefetch" href="/docs/assets/js/61.d80fbdff.js"><link rel="prefetch" href="/docs/assets/js/62.2a66782f.js"><link rel="prefetch" href="/docs/assets/js/8.78886e18.js"><link rel="prefetch" href="/docs/assets/js/9.de6828aa.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.d2cb8686.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link router-link-active">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link router-link-active">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Min Programs</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/frontend/minPrograms/" aria-current="page" class="sidebar-link">小程序</a></li><li><a href="/docs/frontend/minPrograms/tabbar&amp;navigator-bar.html" class="sidebar-link">navigation bar 和 tab bar</a></li><li><a href="/docs/frontend/minPrograms/uniapp.html" aria-current="page" class="active sidebar-link">uniapp</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/frontend/minPrograms/uniapp.html#组件的生命周期" class="sidebar-link">组件的生命周期</a></li><li class="sidebar-sub-header"><a href="/docs/frontend/minPrograms/uniapp.html#uniapps-小程序的部署" class="sidebar-link">uniapps 小程序的部署</a></li><li class="sidebar-sub-header"><a href="/docs/frontend/minPrograms/uniapp.html#杂烩" class="sidebar-link">杂烩</a></li><li class="sidebar-sub-header"><a href="/docs/frontend/minPrograms/uniapp.html#报错" class="sidebar-link">报错</a></li></ul></li><li><a href="/docs/frontend/minPrograms/wx-uniapp.html" class="sidebar-link">微信小程序转 uniapps</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="uniapp"><a href="#uniapp" class="header-anchor">#</a> uniapp</h1> <blockquote><p>记录会员小程序的制作过程。</p></blockquote> <ul><li>easycom 页面路由 pages.json 文件中组件模式，可以无需注册引入，直接使用，可以理解为全局引入。</li></ul> <h2 id="组件的生命周期"><a href="#组件的生命周期" class="header-anchor">#</a> 组件的生命周期</h2> <ul><li>组件实例刚刚被创建好时 created 生命周期被触发。此时，组件数据 this.data 就是在 Component 构造器中定义的数据 data 。 此时还不能调用 setData 。 通常情况下，这个生命周期只应该用于给组件 this 添加一些自定义属性字段。</li> <li>在组件完全初始化完毕、进入页面节点树后 attached 生命周期被触发。此时 this.data 已被初始化为组件的当前值。这个生命周期很有用，绝大多数初始化工作可以在这个时机进行。</li> <li>在组件离开页面节点树后， detached 生命周期被触发。退出一个页面时，如果组件还在页面节点树中，则 detached 会被触发。</li></ul> <h2 id="uniapps-小程序的部署"><a href="#uniapps-小程序的部署" class="header-anchor">#</a> uniapps 小程序的部署</h2> <h3 id="字节跳动小程序"><a href="#字节跳动小程序" class="header-anchor">#</a> 字节跳动小程序</h3> <ul><li>https://microapp.bytedance.com/docs/zh-CN/mini-app/thirdparty/overview/concept</li></ul> <h3 id="微信小程序"><a href="#微信小程序" class="header-anchor">#</a> 微信小程序</h3> <ul><li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/ext.html#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91" target="_blank" rel="noopener noreferrer">第三方代开发小程序相关概念<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>绑定开发小程序 -&gt; 小程序模版的开发、打包和上传 -&gt; 草稿箱 -&gt; 添加到小程序模版库，获得模版ID -&gt; <a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1489140610_Uavc4&amp;token=&amp;lang=zh_CN" target="_blank" rel="noopener noreferrer">调用接口<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，为旗下授权的小程序部署代码。</li> <li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html" target="_blank" rel="noopener noreferrer">miniprogram-ci<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="杂烩"><a href="#杂烩" class="header-anchor">#</a> 杂烩</h2> <ul><li>http://underscorejs.org/ 小程序端使用的类似 lodash 库</li> <li><a href="https://juejin.cn/post/6844903828408533000" target="_blank" rel="noopener noreferrer">postcss-px2rem<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 移动端适配的方案。</li> <li>视频插件、订阅等类似的功能需要在公众平台中进行配置，而且注意注册插件时候使用的 appid 。</li></ul> <h2 id="报错"><a href="#报错" class="header-anchor">#</a> 报错</h2> <ul><li>xhuilder 正常编译，到小程序端显示 <code>TypeError: Cannot set property '__file' of undefined</code>  错误，暂不知道怎么解决？
+<ul><li>原因是我们的项目是在原来导出模板对象的基础上，将正常的配置项作为参数传进去，然后再通过封装的 page app components 等方法来调用，最后返回一个新的重写各种方法的对象。</li> <li>但是，修改 cli 部署命令的时候把导出对象的语句给条件编译了，所有没有导出一个正常的对象。内部由于一些调用问题，所以就出现了这个报错。。。。</li></ul></li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年8月20日星期六 10:15</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/frontend/minPrograms/tabbar&amp;navigator-bar.html" class="prev">
+        navigation bar 和 tab bar
+      </a></span> <span class="next"><a href="/docs/frontend/minPrograms/wx-uniapp.html">
+        微信小程序转 uniapps
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.84b26931.js" defer></script><script src="/docs/assets/js/2.ce1bac44.js" defer></script><script src="/docs/assets/js/37.66398741.js" defer></script><script src="/docs/assets/js/7.f3e6aa45.js" defer></script>
+  </body>
+</html>

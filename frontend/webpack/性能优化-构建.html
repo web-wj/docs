@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>性能优化 - 构建 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/docs/favicon.ico">
+    <link rel="manifest" href="/docs/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="前端工程师 Alex 的学习笔记">
+    <meta name="author" content="Alex Wang">
+    <meta name="keywords" content="vuepress , 前端, 学习笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.d2cb8686.css" as="style"><link rel="preload" href="/docs/assets/js/app.84b26931.js" as="script"><link rel="preload" href="/docs/assets/js/2.ce1bac44.js" as="script"><link rel="preload" href="/docs/assets/js/11.f40a53da.js" as="script"><link rel="preload" href="/docs/assets/js/7.f3e6aa45.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.9e342d30.js"><link rel="prefetch" href="/docs/assets/js/12.16498b95.js"><link rel="prefetch" href="/docs/assets/js/13.b3f6806f.js"><link rel="prefetch" href="/docs/assets/js/14.cdfce6cd.js"><link rel="prefetch" href="/docs/assets/js/15.56907925.js"><link rel="prefetch" href="/docs/assets/js/16.4ddad054.js"><link rel="prefetch" href="/docs/assets/js/17.3540b6fb.js"><link rel="prefetch" href="/docs/assets/js/18.79300792.js"><link rel="prefetch" href="/docs/assets/js/19.03ad5bb0.js"><link rel="prefetch" href="/docs/assets/js/20.ded21212.js"><link rel="prefetch" href="/docs/assets/js/21.e657d943.js"><link rel="prefetch" href="/docs/assets/js/22.a7839767.js"><link rel="prefetch" href="/docs/assets/js/23.a8f18f0b.js"><link rel="prefetch" href="/docs/assets/js/24.c9254768.js"><link rel="prefetch" href="/docs/assets/js/25.d08eb9b8.js"><link rel="prefetch" href="/docs/assets/js/26.16666ea5.js"><link rel="prefetch" href="/docs/assets/js/27.5acfebc6.js"><link rel="prefetch" href="/docs/assets/js/28.ebe9596b.js"><link rel="prefetch" href="/docs/assets/js/29.47fa60b8.js"><link rel="prefetch" href="/docs/assets/js/3.de591152.js"><link rel="prefetch" href="/docs/assets/js/30.3d29431d.js"><link rel="prefetch" href="/docs/assets/js/31.1eabdbb0.js"><link rel="prefetch" href="/docs/assets/js/32.9005245e.js"><link rel="prefetch" href="/docs/assets/js/33.b62a5685.js"><link rel="prefetch" href="/docs/assets/js/34.8c2c84ea.js"><link rel="prefetch" href="/docs/assets/js/35.9336b5cb.js"><link rel="prefetch" href="/docs/assets/js/36.97a3cc76.js"><link rel="prefetch" href="/docs/assets/js/37.66398741.js"><link rel="prefetch" href="/docs/assets/js/38.9d8de1d8.js"><link rel="prefetch" href="/docs/assets/js/39.8f67c036.js"><link rel="prefetch" href="/docs/assets/js/4.f5f9c22c.js"><link rel="prefetch" href="/docs/assets/js/40.e98a9424.js"><link rel="prefetch" href="/docs/assets/js/41.226b689f.js"><link rel="prefetch" href="/docs/assets/js/42.6d8e3c92.js"><link rel="prefetch" href="/docs/assets/js/43.b09bfbcd.js"><link rel="prefetch" href="/docs/assets/js/44.110861cb.js"><link rel="prefetch" href="/docs/assets/js/45.1361df68.js"><link rel="prefetch" href="/docs/assets/js/46.0825a84a.js"><link rel="prefetch" href="/docs/assets/js/47.7eed1a37.js"><link rel="prefetch" href="/docs/assets/js/48.314fd5a1.js"><link rel="prefetch" href="/docs/assets/js/49.09c0dc2c.js"><link rel="prefetch" href="/docs/assets/js/5.bc5eb3ee.js"><link rel="prefetch" href="/docs/assets/js/50.14490fbe.js"><link rel="prefetch" href="/docs/assets/js/51.10b8fc7a.js"><link rel="prefetch" href="/docs/assets/js/52.a3add2d1.js"><link rel="prefetch" href="/docs/assets/js/53.c4ce192c.js"><link rel="prefetch" href="/docs/assets/js/54.5cd22bdd.js"><link rel="prefetch" href="/docs/assets/js/55.9fe70fbb.js"><link rel="prefetch" href="/docs/assets/js/56.829f69ec.js"><link rel="prefetch" href="/docs/assets/js/57.97f358a1.js"><link rel="prefetch" href="/docs/assets/js/58.11cbfa72.js"><link rel="prefetch" href="/docs/assets/js/59.8200c4ed.js"><link rel="prefetch" href="/docs/assets/js/6.232177ed.js"><link rel="prefetch" href="/docs/assets/js/60.db894496.js"><link rel="prefetch" href="/docs/assets/js/61.d80fbdff.js"><link rel="prefetch" href="/docs/assets/js/62.2a66782f.js"><link rel="prefetch" href="/docs/assets/js/8.78886e18.js"><link rel="prefetch" href="/docs/assets/js/9.de6828aa.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.d2cb8686.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link router-link-active">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link router-link-active">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Webpack</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/frontend/webpack/" aria-current="page" class="sidebar-link">webpack</a></li><li><a href="/docs/frontend/webpack/commonTools.html" class="sidebar-link">常用扩展</a></li><li><a href="/docs/frontend/webpack/css工程化.html" class="sidebar-link">css 工程化</a></li><li><a href="/docs/frontend/webpack/js兼容性.html" class="sidebar-link">js 兼容性</a></li><li><a href="/docs/frontend/webpack/性能优化-运行.html" class="sidebar-link">性能优化 - 运行</a></li><li><a href="/docs/frontend/webpack/性能优化-构建.html" class="active sidebar-link">性能优化 - 构建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/frontend/webpack/性能优化-构建.html#减少模块解析" class="sidebar-link">减少模块解析</a></li><li class="sidebar-sub-header"><a href="/docs/frontend/webpack/性能优化-构建.html#优化-loader-性能" class="sidebar-link">优化 loader 性能</a></li><li class="sidebar-sub-header"><a href="/docs/frontend/webpack/性能优化-构建.html#热替换-hmr" class="sidebar-link">热替换(HMR)</a></li></ul></li><li><a href="/docs/frontend/webpack/性能优化-传输.html" class="sidebar-link">性能优化 - 传输</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="性能优化-构建"><a href="#性能优化-构建" class="header-anchor">#</a> 性能优化 - 构建</h1> <ol><li>构建 —— 开发阶段 —— 开发效率</li> <li>传输 —— 打包后的 js 代码传输到浏览器的时间 ——总传输量、文件数量、浏览器缓存</li> <li>运行 —— js 代码在浏览器端的运行速度 —— 代码质量 （尾递归优化等，永远不要过早关注性能）</li></ol> <h2 id="减少模块解析"><a href="#减少模块解析" class="header-anchor">#</a> 减少模块解析</h2> <ul><li>甚至不解析模块。</li> <li>什么叫模块解析？AST抽象语法树分析，记录依赖报存到 dependencies 中，替换依赖函数。</li> <li>哪些模块不用解析呢？模块中无其他依赖（不进行 AST 抽象语法树分析，一些已经打包好的第三方库，例如：jquery）
+<ul><li><code>module: { noParse: /jquery/ }</code></li></ul></li></ul> <h2 id="优化-loader-性能"><a href="#优化-loader-性能" class="header-anchor">#</a> 优化 loader 性能</h2> <h3 id="限制-loader-的使用范围"><a href="#限制-loader-的使用范围" class="header-anchor">#</a> 限制 loader 的使用范围</h3> <ul><li>babel-loader 转换 es6 的语法，但是某些库把本身就是低版本写的，不需要 babel-loader 处理，例如：lodash 。</li> <li>通过 <code>module.rules.exclude</code> 和 <code>module.rules.include</code> 排除掉或者仅仅支持哪些库进行配置。
+<ul><li>暴力写法，直接排除 <code>node_modules</code> 只管 src 目录下的代码。</li> <li>noParse 和 exclude 不冲突，因为模块解析不包含 loader 处理。</li></ul></li></ul> <h3 id="缓存-loader-结果"><a href="#缓存-loader-结果" class="header-anchor">#</a> 缓存 loader 结果</h3> <ul><li>代码内容不变，经过 loader 处理，结果不变。</li> <li>cache-loader 最后使用缓存 loader ，它最后执行的，怎么能实现后续使用缓存呢？
+<ul><li>pitch 过程 loader.pitch = (filePath) =&gt; {}</li></ul></li> <li>指定缓存的路径</li></ul> <h3 id="开启多线程-大项目"><a href="#开启多线程-大项目" class="header-anchor">#</a> 开启多线程（大项目）</h3> <ul><li>thread-loader 会开启一个线程池，线程池中包含适量的线程。</li> <li>放到 cache-loader 后面，因为主要是为了处理模块解析耗时问题。后续的 loader 都会放到新线程中处理。
+<ol><li>用 webapck api 生成文件 —— 不在 webpack 主线程。</li> <li>不同使用自定义的 plugin api , 例如：  <code>mini-css-extact-plugin</code> 提供的 plugin 会向 webpack 注入了新的 api ,这时候就会报错。</li> <li>无法访问 webpack options 。</li> <li>放 babel-loader 等。</li></ol></li></ul> <p>测试几核的 cpu</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> cpus <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cpus<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">cpus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="热替换-hmr"><a href="#热替换-hmr" class="header-anchor">#</a> 热替换(HMR)</h2> <blockquote><p>hot module replacement 热替换并不能降低构建时间（可能还会稍微增加），但可以降低代码改动到效果呈现的时间。</p></blockquote> <p>当使用<code>webpack-dev-server</code>时，考虑代码改动到效果呈现的过程</p> <p><img src="/docs/assets/img/hmr1.3b23c829.png" alt="代码改动"></p> <p>而使用了热替换后，流程发生了变化:</p> <p><img src="/docs/assets/img/hmr2.85a0d873.png" alt="热替换"></p> <h3 id="使用和原理"><a href="#使用和原理" class="header-anchor">#</a> 使用和原理</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    hot<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">// 可选</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>HotModuleReplacementPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 判断是否开启热更新</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>module<span class="token punctuation">.</span>hot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>hot<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 接受热更新</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li><code>webpack-dev-server</code> 会向打包结果中注入 module.hot 属性，重新打包后，会调用 <code>location.reload()</code> 来刷新页面，但是如果运行了 <code>module.hot.accept</code> ，让 <code>webpack-dev-server</code> 通过 <strong>socket 管道</strong>，把服务器内容发送到浏览器。</li> <li><img src="/docs/assets/img/hmr2.85a0d873.png" alt="热替换"></li> <li>将结果交给 <code>HotModuleReplacementPlugin</code> 注入的代码执行，插件会覆盖原始代码，让代码重新执行。</li></ul> <h3 id="样式热替换"><a href="#样式热替换" class="header-anchor">#</a> 样式热替换</h3> <ul><li>style-loader ,因为热替换发生时，只会简单地重新运行模块代码，因此 style-loader  的代码一运行，就会重新设置 style 中样式，但是 <code>mini-css-extract-plugin</code> 生成的文件是在<strong>构建期间</strong>，运行期间也无法改动文件，因此是无效的。</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年8月21日星期日 19:33</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/frontend/webpack/性能优化-运行.html" class="prev">
+        性能优化 - 运行
+      </a></span> <span class="next"><a href="/docs/frontend/webpack/性能优化-传输.html">
+        性能优化 - 传输
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.84b26931.js" defer></script><script src="/docs/assets/js/2.ce1bac44.js" defer></script><script src="/docs/assets/js/11.f40a53da.js" defer></script><script src="/docs/assets/js/7.f3e6aa45.js" defer></script>
+  </body>
+</html>

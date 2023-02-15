@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>express 中间件 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/docs/favicon.ico">
+    <link rel="manifest" href="/docs/manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="前端工程师 Alex 的学习笔记">
+    <meta name="author" content="Alex Wang">
+    <meta name="keywords" content="vuepress , 前端, 学习笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.d2cb8686.css" as="style"><link rel="preload" href="/docs/assets/js/app.84b26931.js" as="script"><link rel="preload" href="/docs/assets/js/2.ce1bac44.js" as="script"><link rel="preload" href="/docs/assets/js/16.4ddad054.js" as="script"><link rel="preload" href="/docs/assets/js/7.f3e6aa45.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.9e342d30.js"><link rel="prefetch" href="/docs/assets/js/11.f40a53da.js"><link rel="prefetch" href="/docs/assets/js/12.16498b95.js"><link rel="prefetch" href="/docs/assets/js/13.b3f6806f.js"><link rel="prefetch" href="/docs/assets/js/14.cdfce6cd.js"><link rel="prefetch" href="/docs/assets/js/15.56907925.js"><link rel="prefetch" href="/docs/assets/js/17.3540b6fb.js"><link rel="prefetch" href="/docs/assets/js/18.79300792.js"><link rel="prefetch" href="/docs/assets/js/19.03ad5bb0.js"><link rel="prefetch" href="/docs/assets/js/20.ded21212.js"><link rel="prefetch" href="/docs/assets/js/21.e657d943.js"><link rel="prefetch" href="/docs/assets/js/22.a7839767.js"><link rel="prefetch" href="/docs/assets/js/23.a8f18f0b.js"><link rel="prefetch" href="/docs/assets/js/24.c9254768.js"><link rel="prefetch" href="/docs/assets/js/25.d08eb9b8.js"><link rel="prefetch" href="/docs/assets/js/26.16666ea5.js"><link rel="prefetch" href="/docs/assets/js/27.5acfebc6.js"><link rel="prefetch" href="/docs/assets/js/28.ebe9596b.js"><link rel="prefetch" href="/docs/assets/js/29.47fa60b8.js"><link rel="prefetch" href="/docs/assets/js/3.de591152.js"><link rel="prefetch" href="/docs/assets/js/30.3d29431d.js"><link rel="prefetch" href="/docs/assets/js/31.1eabdbb0.js"><link rel="prefetch" href="/docs/assets/js/32.9005245e.js"><link rel="prefetch" href="/docs/assets/js/33.b62a5685.js"><link rel="prefetch" href="/docs/assets/js/34.8c2c84ea.js"><link rel="prefetch" href="/docs/assets/js/35.9336b5cb.js"><link rel="prefetch" href="/docs/assets/js/36.97a3cc76.js"><link rel="prefetch" href="/docs/assets/js/37.66398741.js"><link rel="prefetch" href="/docs/assets/js/38.9d8de1d8.js"><link rel="prefetch" href="/docs/assets/js/39.8f67c036.js"><link rel="prefetch" href="/docs/assets/js/4.f5f9c22c.js"><link rel="prefetch" href="/docs/assets/js/40.e98a9424.js"><link rel="prefetch" href="/docs/assets/js/41.226b689f.js"><link rel="prefetch" href="/docs/assets/js/42.6d8e3c92.js"><link rel="prefetch" href="/docs/assets/js/43.b09bfbcd.js"><link rel="prefetch" href="/docs/assets/js/44.110861cb.js"><link rel="prefetch" href="/docs/assets/js/45.1361df68.js"><link rel="prefetch" href="/docs/assets/js/46.0825a84a.js"><link rel="prefetch" href="/docs/assets/js/47.7eed1a37.js"><link rel="prefetch" href="/docs/assets/js/48.314fd5a1.js"><link rel="prefetch" href="/docs/assets/js/49.09c0dc2c.js"><link rel="prefetch" href="/docs/assets/js/5.bc5eb3ee.js"><link rel="prefetch" href="/docs/assets/js/50.14490fbe.js"><link rel="prefetch" href="/docs/assets/js/51.10b8fc7a.js"><link rel="prefetch" href="/docs/assets/js/52.a3add2d1.js"><link rel="prefetch" href="/docs/assets/js/53.c4ce192c.js"><link rel="prefetch" href="/docs/assets/js/54.5cd22bdd.js"><link rel="prefetch" href="/docs/assets/js/55.9fe70fbb.js"><link rel="prefetch" href="/docs/assets/js/56.829f69ec.js"><link rel="prefetch" href="/docs/assets/js/57.97f358a1.js"><link rel="prefetch" href="/docs/assets/js/58.11cbfa72.js"><link rel="prefetch" href="/docs/assets/js/59.8200c4ed.js"><link rel="prefetch" href="/docs/assets/js/6.232177ed.js"><link rel="prefetch" href="/docs/assets/js/60.db894496.js"><link rel="prefetch" href="/docs/assets/js/61.d80fbdff.js"><link rel="prefetch" href="/docs/assets/js/62.2a66782f.js"><link rel="prefetch" href="/docs/assets/js/8.78886e18.js"><link rel="prefetch" href="/docs/assets/js/9.de6828aa.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.d2cb8686.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link router-link-active">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backend" class="dropdown-title"><span class="title">backend</span> <span class="arrow down"></span></button> <button type="button" aria-label="backend" class="mobile-dropdown-title"><span class="title">backend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/backend/NodeJs/" class="nav-link router-link-active">
+  Node Js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/backend/服务端渲染/" class="nav-link">
+  服务端渲染
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="frontend" class="dropdown-title"><span class="title">frontend</span> <span class="arrow down"></span></button> <button type="button" aria-label="frontend" class="mobile-dropdown-title"><span class="title">frontend</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/frontend/ES6/" class="nav-link">
+  E S 6
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML&amp;CSS/" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/HTML5&amp;CSS3/" class="nav-link">
+  HTML5&amp;CSS3
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/JavaScript/" class="nav-link">
+  Java Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/minPrograms/" class="nav-link">
+  Min Programs
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/Network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/ng1/" class="nav-link">
+  Ng1
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/TypeScript/" class="nav-link">
+  Type Script
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/VUE/" class="nav-link">
+  VUE
+</a></li><li class="dropdown-item"><!----> <a href="/docs/frontend/webpack/" class="nav-link">
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="interview" class="dropdown-title"><span class="title">interview</span> <span class="arrow down"></span></button> <button type="button" aria-label="interview" class="mobile-dropdown-title"><span class="title">interview</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/interview/base/" class="nav-link">
+  Base
+</a></li><li class="dropdown-item"><!----> <a href="/docs/interview/projects/" class="nav-link">
+  Projects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="reading" class="dropdown-title"><span class="title">reading</span> <span class="arrow down"></span></button> <button type="button" aria-label="reading" class="mobile-dropdown-title"><span class="title">reading</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/reading/" class="nav-link">
+  Reading
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="tools" class="dropdown-title"><span class="title">tools</span> <span class="arrow down"></span></button> <button type="button" aria-label="tools" class="mobile-dropdown-title"><span class="title">tools</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/tools/axios/" class="nav-link">
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/cli/" class="nav-link">
+  Cli
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/devtools/" class="nav-link">
+  Devtools
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/GIT/" class="nav-link">
+  GIT
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vscode/" class="nav-link">
+  Vscode
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/vuepress/" class="nav-link">
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/包管理工具/" class="nav-link">
+  包管理工具
+</a></li><li class="dropdown-item"><!----> <a href="/docs/tools/小工具/" class="nav-link">
+  小工具
+</a></li></ul></div></div><div class="nav-item"><a href="https://github.com/web-wj/docs" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Node Js</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/backend/NodeJs/" aria-current="page" class="sidebar-link">Node.js</a></li><li><a href="/docs/backend/NodeJs/express.html" aria-current="page" class="active sidebar-link">express 中间件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/express.html#概念" class="sidebar-link">概念</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/express.html#使用" class="sidebar-link">使用</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/express.html#注意" class="sidebar-link">注意</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/express.html#分类" class="sidebar-link">分类</a></li><li class="sidebar-sub-header"><a href="/docs/backend/NodeJs/express.html#自定义中间件" class="sidebar-link">自定义中间件</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="express-中间件"><a href="#express-中间件" class="header-anchor">#</a> express 中间件</h1> <blockquote><p>文档：<a href="https://www.expressjs.com.cn/" target="_blank" rel="noopener noreferrer">https://www.expressjs.com.cn/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="概念"><a href="#概念" class="header-anchor">#</a> 概念</h2> <ul><li>中间件的概念就是在业务流程过程中，逐步处理的环节。类似于在工业废水排放的过程中，逐步过滤有害物质的流程。</li> <li>在代码层次上，就是对服务器端接受的请求，使用中间件做预处理。</li> <li>中间件是一个函数，包含 req, res, next 三个参数，next() 参数把流转关系交给下一个中间件或路由。所以说有无 next 是判断一个函数为中间件的标准。</li></ul> <p>特性：</p> <ul><li><code>next()</code>是必须的，在它后面不用再写代码了。</li> <li>多个中间件共享 <code>req、res</code> 对象。</li></ul> <h2 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h2> <p>可使用 express.use 来定义全局的中间件，会在每一个请求进来的时候，逐步处理请求。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 这个定义的一个普通的中间件, 局部使用</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mv1</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'这是一个普通的中间件！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 全局的中间件</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'这个第一个中间件!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  req<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'这个第二个中间件!'</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> mv1<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'HOME PAGE!'</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'USER PAGE!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8888</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'express server running at http://127.0.0.1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h2 id="注意"><a href="#注意" class="header-anchor">#</a> 注意</h2> <ul><li>一定要在定义路之前注册中间件</li> <li>执行完中间件的业务代码后一定要调用 next()</li> <li>为了防止代码混乱，在 next() 之后不写任何代码逻辑</li></ul> <h2 id="分类"><a href="#分类" class="header-anchor">#</a> 分类</h2> <ul><li>应用级别的中间件：通过 app.use app.get app.post 等，绑定到 app 实例上的中间件。</li> <li>路由级别的中间件：express.Router() 绑定到 router 实例上的中间件。</li> <li>错误级别的中间件：专门用来捕获发生的异常，防止系统崩溃。必须包含 4 个形参，分别是 err、req、res、next
+<ul><li>必须注册在所有路由之后，才会工作！</li></ul></li> <li>内置中间件：
+<ul><li>express.static() 快速托管静态资源</li> <li>express.json() 解析 JSON 格式的请求体数据(4.16.0+)
+<ul><li><code>app.use(express.json())</code></li></ul></li> <li>express.urlencoded()解析 url-encoded 格式的表单数据(4.16.0+)
+<ul><li><code>app.use(express.urlencoded({ extended: false }))</code></li></ul></li></ul></li> <li>第三方中间件：
+<ul><li>body-parser 解析请求体数据</li></ul></li></ul> <h2 id="自定义中间件"><a href="#自定义中间件" class="header-anchor">#</a> 自定义中间件</h2></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年2月28日星期一 22:52</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/backend/NodeJs/" class="prev router-link-active">
+        Node.js
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/docs/assets/js/app.84b26931.js" defer></script><script src="/docs/assets/js/2.ce1bac44.js" defer></script><script src="/docs/assets/js/16.4ddad054.js" defer></script><script src="/docs/assets/js/7.f3e6aa45.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "前端工程师 Alex 的学习笔记",
+  "short_name": "学习笔记",
+  "description": "前端工程师 Alex 的学习笔记",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "start_url": "index.html"
+}
