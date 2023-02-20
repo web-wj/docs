@@ -30,6 +30,10 @@
 - WebWorker（文件的异步，提升性能，提升交互体验）
 - Fetch（传说中要替代Ajax的东西，兼容性不是很好）
 
+1. h5 显示 world、prd 文件。
+
+- 可以显示图片来代替，返回的时候页面上的数据需要缓存。使用pageshow、pagehide事件来实现页面的数据缓存。
+
 ## CSS3
 
 ### border-radius
