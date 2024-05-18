@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .float {
+        float: left;
+      }
+      #main {
+        width: 100%;
+        height: 200px;
+        background-color: lightpink;
+      }
+      #main-wrap {
+        margin: 0 190px 0 190px;
+      }
+      #left {
+        width: 190px;
+        height: 200px;
+        background-color: lightsalmon;
+        margin-left: -100%;
+      }
+      #right {
+        width: 190px;
+        height: 200px;
+        background-color: lightskyblue;
+        margin-left: -190px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main" class="float">
+      <div id="main-wrap">main</div>
+    </div>
+    <div id="left" class="float">left</div>
+    <div id="right" class="float">right</div>
+    <script>
+      const target = {
+        age: 18,
+        sex: "man",
+        lover: {
+          name: "lina",
+          age: 16,
+        },
+        arr: ["1", 2, 3, 4],
+      };
+      function deepCopy(target = {}) {
+        // 如何他不是对象和数组，或者是null直接返回
+        if (typeof target !== "object" || target == null) {
+          return target;
+        }
+        let result;
+        if (target instanceof Array) {
+          result = [];
+        } else {
+          result = {};
+        }
+        for (let key in target) {
+          if (target.hasOwnProperty(key)) {
+            result[key] = deepCopy(target[key]);
+          }
+        }
+        return result;
+      }
+      const res = deepCopy(target);
+      res.age = 100;
+      console.log("target", target.age, res);
+    </script>
+  </body>
+</html>
